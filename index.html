@@ -5,255 +5,149 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>星链AI速报 · 7.14</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
-
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
-  background: linear-gradient(180deg, #08080c 0%, #0d0d14 50%, #08080c 100%);
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0a0a10;
   color: #fff;
-  min-height: 100vh;
-  padding: 32px 20px 80px;
+  padding: 24px 16px 60px;
 }
-
-.header{
-  text-align: center;
-  padding: 20px 0 32px;
-}
-.header-date{
-  font-size: 13px;
-  font-weight: 500;
-  color: #666;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.header-title{
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #a0a0b0, #e0e0f0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .cards{
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   max-width: 420px;
   margin: 0 auto;
 }
-
 .card{
-  border-radius: 20px;
-  padding: 28px 26px;
+  border-radius: 24px;
+  padding: 30px 24px 24px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.06);
-  background: linear-gradient(135deg, rgba(20,20,30,.95), rgba(16,16,24,.98));
-  transition: transform .2s, box-shadow .2s;
 }
-.card:active{transform:scale(.985)}
-
-.card::before{
-  content:"";
-  position:absolute;
-  width:180px;height:180px;
-  border-radius:50%;
-  filter:blur(90px);
-  opacity:.25;
-  pointer-events:none;
-  z-index:0;
+.card-tag{
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.2);
+  backdrop-filter: blur(4px);
 }
-
-.card-head{position:relative;z-index:1;display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.card-emoji{font-size:20px;line-height:1}
-.card-tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:3px 10px;border-radius:20px}
-.card-title{font-size:28px;font-weight:800;line-height:1.15;margin:12px 0;position:relative;z-index:1;letter-spacing:-.5px}
-.card-body{font-size:14px;color:#999;line-height:1.9;position:relative;z-index:1}
-.card-body b{color:#ccc;font-weight:600}
-.card-links{margin-top:16px;position:relative;z-index:1;display:flex;flex-direction:column;gap:6px}
-.card-links a{
-  color:#7ea8f0;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:500;
-  display:inline-flex;align-items:center;gap:4px;
-  transition:color .2s;
+.card-title{
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: -1px;
 }
-.card-links a:hover{color:#a0c4ff}
-.card-links .no-link{color:#555;font-size:13px}
-
-.strike{text-decoration:line-through;color:#555;margin-right:6px;font-weight:400}
-.hl{color:#fff}
-
-/* per-card accent */
-.c0::before{background:#ff6b4a;top:-40px;right:-40px}
-.c0 .card-tag{background:rgba(255,107,74,.2);color:#ff8a6e}
-.c0 .card-title{color:#fff}
-
-.c1::before{background:#4a90ff;bottom:-50px;left:-30px}
-.c1 .card-tag{background:rgba(74,144,255,.2);color:#7aafff}
-.c1 .card-title{color:#fff}
-
-.c2::before{background:#00c9a7;top:30%;left:-35px}
-.c2 .card-tag{background:rgba(0,201,167,.2);color:#40e0c0}
-.c2 .card-title{color:#fff}
-
-.c3::before{background:#b44dff;bottom:-35px;right:-35px}
-.c3 .card-tag{background:rgba(180,77,255,.2);color:#c885ff}
-.c3 .card-title{color:#fff}
-
-.c4::before{background:#2de0c0;top:-30px;left:-30px}
-.c4 .card-tag{background:rgba(45,224,192,.2);color:#60e8d0}
-.c4 .card-title{color:#fff}
-
-.c5::before{background:#f0a030;top:40%;right:-50px}
-.c5 .card-tag{background:rgba(240,160,48,.2);color:#f5c060}
-.c5 .card-title{color:#fff}
-
-.meta-row{
-  display:flex;align-items:center;gap:6px;
-  font-size:12px;color:#555;
-  position:relative;z-index:1;
-  margin-top:14px;padding-top:14px;
-  border-top:1px solid rgba(255,255,255,.05);
+.card-body{
+  font-size: 14px;
+  line-height: 1.9;
+  opacity: .9;
 }
+.card-body b{font-weight:700}
+.card-links{margin-top:16px;display:flex;flex-direction:column;gap:5px}
+.card-links a{color:#fff;opacity:.8;font-size:13px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);display:inline-block;padding-bottom:2px}
+.card-links .no-link{opacity:.5;font-size:13px}
+.meta{font-size:12px;opacity:.6;margin-top:10px}
+.strike{text-decoration:line-through;opacity:.5;margin-right:6px}
 
-.footer{
-  text-align:center;
-  margin-top:32px;
-  padding:24px 20px;
-  max-width:420px;
-  margin-left:auto;margin-right:auto;
-}
-.footer-brand{
-  font-size:15px;
-  font-weight:600;
-  color:#888;
-  letter-spacing:1px;
-  margin-bottom:12px;
-}
-.footer-cta{
-  font-size:15px;
-  font-weight:600;
-  color:#ff7a5c;
-  line-height:1.6;
-}
+/* VIBRANT CARDS */
+.c0{background:linear-gradient(135deg,#ff512f,#dd2476)}
+.c1{background:linear-gradient(135deg,#11998e,#38ef7d)}
+.c2{background:linear-gradient(135deg,#4facfe,#00f2fe)}
+.c3{background:linear-gradient(135deg,#8e2de2,#4a00e0)}
+.c4{background:linear-gradient(135deg,#f7971e,#ffd200)}
+.c5{background:linear-gradient(135deg,#fc466b,#3f5efb)}
+
+.footer{text-align:center;margin-top:28px;padding:16px 0}
+.footer-brand{font-size:14px;font-weight:600;color:#666;letter-spacing:2px;margin-bottom:10px}
+.footer-cta{font-size:16px;font-weight:700;color:#ff512f;line-height:1.6}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-date">2026.07.14</div>
-  <div class="header-title">星链 AI 速报</div>
-</div>
-
 <div class="cards">
 
-<!-- 1 WAIC -->
 <div class="card c0">
-  <div class="card-head">
-    <span class="card-emoji">🔑</span>
-    <span class="card-tag">大会</span>
-  </div>
+  <div class="card-tag">大会</div>
   <div class="card-title">WAIC<br>本周开幕</div>
   <div class="card-body">
     上海 · 7.17—20<br>
     10万㎡ · 1100+企业 · 300+新品首发<br>
-    9位诺奖/图灵奖得主到场<br>
-    强化学习之父 <b>Richard Sutton</b> 主旨演讲
+    9位诺奖/图灵奖得主<br>
+    <b>Richard Sutton</b> 主旨演讲
   </div>
   <div class="card-links">
-    <a href="https://www.163.com/dy/article/KVL39TEH0530QRMB.html" target="_blank">↗ 人民网报道全文</a>
+    <a href="https://www.163.com/dy/article/KVL39TEH0530QRMB.html">↗ 人民网报道全文</a>
   </div>
 </div>
 
-<!-- 2 桌面机器人 -->
 <div class="card c1">
-  <div class="card-head">
-    <span class="card-emoji">📉</span>
-    <span class="card-tag">硬件</span>
-  </div>
-  <div class="card-title"><span class="strike">纯陪伴</span><span class="hl">办公上位</span></div>
+  <div class="card-tag">硬件</div>
+  <div class="card-title"><span class="strike">纯陪伴</span>办公上位</div>
   <div class="card-body">
     Loona 推 <b>Deskmate</b>——具身智能工作伙伴<br>
     Ropet 走机器宠物路线，已卖近<b>2万台</b><br>
-    纯AI陪伴热度大降，能干活的才站得住
+    能干活的才站得住
   </div>
   <div class="card-links">
-    <a href="https://zhuanlan.zhihu.com/p/1995162741904787045" target="_blank">↗ Loona Deskmate 深度分析</a>
-    <a href="https://zhuanlan.zhihu.com/p/1967559907499827208" target="_blank">↗ Ropet 机器宠物拆解</a>
+    <a href="https://zhuanlan.zhihu.com/p/1995162741904787045">↗ Loona Deskmate</a>
+    <a href="https://zhuanlan.zhihu.com/p/1967559907499827208">↗ Ropet 机器宠物</a>
   </div>
 </div>
 
-<!-- 3 OpenAI -->
 <div class="card c2">
-  <div class="card-head">
-    <span class="card-emoji">💰</span>
-    <span class="card-tag">大模型</span>
-  </div>
-  <div class="card-title">推理成本<br>砍半</div>
+  <div class="card-tag">大模型</div>
+  <div class="card-title">推理成本砍半</div>
   <div class="card-body">
     GPT-5.6 上线，底层优化驱动<br>
-    不是降价促销，是软硬件一体压缩<br>
-    本地部署 vs 云端的性价比差距在缩小
+    不是降价，是软硬件一体压缩<br>
+    本地 vs 云端的性价比差距在缩小
   </div>
   <div class="card-links">
     <span class="no-link">🔍 搜「GPT-5.6 推理成本」</span>
   </div>
 </div>
 
-<!-- 4 智元 -->
 <div class="card c3">
-  <div class="card-head">
-    <span class="card-emoji">🤖</span>
-    <span class="card-tag">机器人</span>
-  </div>
+  <div class="card-tag">机器人</div>
   <div class="card-title">量产破万</div>
   <div class="card-body">
-    仅一个季度，从5000到<b>10000台</b><br>
+    一个季度，5000→<b>10000台</b><br>
     远征系列进入美国CES<br>
-    BOM成本14-20万，离家庭消费还远
+    BOM 14-20万，家庭尚远
   </div>
-  <div class="meta-row">
-    <span>宇树科技 IPO 获批</span><span>·</span><span>科创板最快 104 天</span>
-  </div>
+  <div class="meta">宇树科技 IPO 获批 · 科创板最快 104 天</div>
   <div class="card-links">
-    <a href="https://www.agibot.com.cn/" target="_blank">↗ 智元官网</a>
+    <a href="https://www.agibot.com.cn/">↗ 智元官网</a>
   </div>
 </div>
 
-<!-- 5 AI教育 -->
 <div class="card c4">
-  <div class="card-head">
-    <span class="card-emoji">🏫</span>
-    <span class="card-tag">政策</span>
-  </div>
+  <div class="card-tag">政策</div>
   <div class="card-title">高校必修课</div>
   <div class="card-body">
     教育部发文<br>
     AI纳入高等教育公共基础课程<br>
-    覆盖所有专业，不只是计算机系
+    覆盖所有专业
   </div>
   <div class="card-links">
     <span class="no-link">🔍 搜「AI 高等教育 必修课」</span>
   </div>
 </div>
 
-<!-- 6 产业 -->
 <div class="card c5">
-  <div class="card-head">
-    <span class="card-emoji">📊</span>
-    <span class="card-tag">产业</span>
-  </div>
+  <div class="card-tag">产业</div>
   <div class="card-title">1.2 万亿</div>
   <div class="card-body">
-    企业超<b>6200家</b>，核心产业规模突破<br>
-    2026被定为产业转折年<br>
-    大模型 · 智能体 · 具身智能 三线并进
+    企业超<b>6200家</b>，产业规模突破<br>
+    2026 产业转折年<br>
+    大模型·智能体·具身智能 三线并进
   </div>
 </div>
 

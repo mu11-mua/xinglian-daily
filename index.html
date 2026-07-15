@@ -6,92 +6,154 @@
 <title>星链AI速报 · 7.15</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0d0d0d;color:#fff;max-width:440px;margin:0 auto;padding:20px 16px 60px}
-.card{border-radius:16px;padding:28px 24px;margin-bottom:16px;position:relative;overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:center}
-.card::before{content:"";position:absolute;width:200px;height:200px;border-radius:50%;filter:blur(80px);opacity:.35;pointer-events:none}
-.c1{background:#1a1a1a}.c1::before{background:#ff6a3d;top:-40px;right:-40px}
-.c2{background:#1a1a1a}.c2::before{background:#4a90d9;bottom:-60px;left:-40px}
-.c3{background:#1a1a1a}.c3::before{background:#00c9a7;top:40%;left:-30px}
-.c4{background:#1a1a1a}.c4::before{background:#c94dff;bottom:-30px;right:-30px}
-.c5{background:#1a1a1a}.c5::before{background:#5eead4;top:-30px;left:-30px}
-.c6{background:#1a1a1a}.c6::before{background:#f0a500;top:50%;right:-50px}
-.emoji{font-size:18px;margin-bottom:10px;position:relative;z-index:1}
-.title{font-size:15px;color:#888;margin-bottom:8px;position:relative;z-index:1}
-.big{font-size:32px;font-weight:700;line-height:1.2;margin-bottom:16px;position:relative;z-index:1}
-.body{font-size:14px;color:#bbb;line-height:1.8;position:relative;z-index:1}
-a{color:#7eb8ff;text-decoration:none;font-size:13px}
-.link-row{margin-top:14px;position:relative;z-index:1;font-size:13px;color:#666}
-.footer{text-align:center;margin-top:24px;padding:20px;border-top:1px solid #222}
-.footer p{color:#888;font-size:13px;margin:4px 0}
-.footer .cta{color:#ff6a3d;font-size:15px;font-weight:600;margin-top:8px}
-.date-badge{display:inline-block;font-size:11px;color:#888;background:#222;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#fef9f0 0%,#fdf2f8 50%,#f0f4ff 100%);color:#3a2f3a;max-width:440px;margin:0 auto;padding:24px 16px 60px;position:relative}
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 10%,rgba(255,182,193,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(173,216,230,.12) 0%,transparent 50%);pointer-events:none;z-index:0}
+.header{text-align:center;padding:10px 0 20px;position:relative;z-index:1}
+.header .icon{font-size:40px;margin-bottom:4px}
+.header h1{font-size:18px;font-weight:700;color:#d4786e;letter-spacing:1px}
+.header .date{font-size:12px;color:#c4a8b0;margin-top:2px}
+.header .deco{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.header .deco span{width:6px;height:6px;border-radius:50%;background:#f0c4b0}
+.header .deco span:nth-child(2){background:#c4d8f0}
+.header .deco span:nth-child(3){background:#d4c4f0}
+.header .deco span:nth-child(4){background:#c4f0d8}
+.header .deco span:nth-child(5){background:#f0e4c4}
+
+.card{border-radius:20px;padding:24px 22px;margin-bottom:14px;position:relative;z-index:1;overflow:visible}
+.card::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none}
+
+.c1{background:#fff5f5;border:2px solid #fdd4d4}.c1::after{box-shadow:inset 0 -30px 40px -40px rgba(255,150,130,.3)}
+.c2{background:#f5f8ff;border:2px solid #d4dffd}.c2::after{box-shadow:inset 0 -30px 40px -40px rgba(130,160,255,.25)}
+.c3{background:#f5fff8;border:2px solid #d4fde0}.c3::after{box-shadow:inset 0 -30px 40px -40px rgba(130,220,160,.25)}
+.c4{background:#fdf5ff;border:2px solid #e8d4fd}.c4::after{box-shadow:inset 0 -30px 40px -40px rgba(180,140,240,.25)}
+.c5{background:#fffff5;border:2px solid #fdf0c4}.c5::after{box-shadow:inset 0 -30px 40px -40px rgba(240,200,100,.25)}
+.c6{background:#fff8f5;border:2px solid #fde0d4}.c6::after{box-shadow:inset 0 -30px 40px -40px rgba(240,150,120,.25)}
+
+.bubble{position:absolute;border-radius:50%;z-index:0;pointer-events:none}
+.b1{width:16px;height:16px;top:-6px;right:20px;background:#ffe0d8;animation:float 3s ease-in-out infinite}
+.b2{width:10px;height:10px;bottom:-4px;left:30px;background:#d8e8ff;animation:float 2.5s ease-in-out .5s infinite}
+.b3{width:22px;height:22px;top:15px;left:-8px;background:#e0ffe8;border-radius:50% 50% 50% 30%;animation:float 3.5s ease-in-out .8s infinite}
+.b4{width:8px;height:8px;top:-3px;right:40px;background:#f0e0ff;animation:float 2s ease-in-out .3s infinite}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+.tag-line{display:flex;align-items:center;gap:6px;margin-bottom:12px;position:relative;z-index:1}
+.tag-dot{width:8px;height:8px;border-radius:50%}
+.c1 .tag-dot{background:#f09080}.c2 .tag-dot{background:#8098f0}.c3 .tag-dot{background:#70c890}.c4 .tag-dot{background:#a080e0}.c5 .tag-dot{background:#e0c070}.c6 .tag-dot{background:#e89870}
+.tag{font-size:12px;color:#aaa;letter-spacing:.5px}
+.tag-date{font-size:11px;color:#ccc;margin-left:auto}
+
+.big-line{font-size:22px;font-weight:800;line-height:1.3;margin-bottom:10px;position:relative;z-index:1;letter-spacing:.5px}
+.c1 .big-line{color:#d4685a}.c2 .big-line{color:#5870c8}.c3 .big-line{color:#48a068}.c4 .big-line{color:#7858b8}.c5 .big-line{color:#b89830}.c6 .big-line{color:#c06040}
+
+.divider{height:2px;margin:10px 0 12px;border-radius:1px;position:relative;z-index:1}
+.c1 .divider{background:linear-gradient(90deg,#fdd4d4,transparent)}
+.c2 .divider{background:linear-gradient(90deg,#d4dffd,transparent)}
+.c3 .divider{background:linear-gradient(90deg,#d4fde0,transparent)}
+.c4 .divider{background:linear-gradient(90deg,#e8d4fd,transparent)}
+.c5 .divider{background:linear-gradient(90deg,#fdf0c4,transparent)}
+.c6 .divider{background:linear-gradient(90deg,#fde0d4,transparent)}
+
+.body-text{font-size:13.5px;color:#6b5b6b;line-height:1.85;position:relative;z-index:1}
+.body-text b{color:#5a4a5a}
+
+.link{display:inline-block;margin-top:10px;font-size:12px;color:#b0a0b0;text-decoration:none;position:relative;z-index:1;transition:color .2s}
+.link:hover{color:#8090d0}
+.link::after{content:" →";font-size:11px}
+
+.footer{text-align:center;margin-top:28px;padding:24px 20px;position:relative;z-index:1}
+.footer .dots{display:flex;justify-content:center;gap:5px;margin-bottom:14px}
+.footer .dots span{width:5px;height:5px;border-radius:50%;background:#e0d0d8}
+.footer p{color:#c0b0b8;font-size:12px;margin:3px 0}
+.footer .cta{color:#d4786e;font-size:14px;font-weight:600;margin-top:10px;line-height:1.6}
+.footer .cta .highlight{background:linear-gradient(180deg,transparent 60%,#ffe0d8 60%);padding:0 2px}
 </style>
 </head>
 <body>
 
+<div class="header">
+  <div class="icon">☕️</div>
+  <h1>星链AI · 今日速报</h1>
+  <div class="date">2026.07.15</div>
+  <div class="deco"><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+
 <div class="card c1">
-  <div class="emoji">🔑</div>
-  <div class="title">WAIC 2026 <span class="date-badge">7.17开幕</span></div>
-  <div class="big">倒计时2天</div>
-  <div class="body">
-    世界人工智能大会7.17-20上海世博+张江+西岸"三地四馆"启幕，习近平出席开幕式。1100+企业参展，3000+展品，超300款全球首发。智元远征A3 Ultra、MiniMax M3、阶跃Agent OS亮相。会前已达成<b>162亿</b>意向合作。
+  <div class="bubble b1"></div>
+  <div class="tag-line"><span class="tag-dot"></span><span class="tag">WAIC 2026</span><span class="tag-date">7.17 开幕</span></div>
+  <div class="big-line">倒计时 2 天 ✨</div>
+  <div class="divider"></div>
+  <div class="body-text">
+    世界人工智能大会 7.17-20 上海「三地四馆」启幕，习近平出席开幕式。<br>
+    1100+ 企业参展，超 <b>300 款全球首发</b>。智元远征 A3 Ultra、MiniMax M3、阶跃 Agent OS 亮相。<br>
+    会前已达成 <b>162 亿</b> 意向合作 🎯
   </div>
-  <div class="link-row"><a href="https://zhuanlan.zhihu.com/p/2053262249817551144" target="_blank">知乎：WAIC 2026 完整前瞻 →</a></div>
+  <a class="link" href="https://zhuanlan.zhihu.com/p/2053262249817551144" target="_blank">知乎：WAIC 完整前瞻</a>
 </div>
 
 <div class="card c2">
-  <div class="emoji">📱</div>
-  <div class="title">努比亚 × 字节 <span class="date-badge">7.8官宣</span></div>
-  <div class="big">全球首款AI智能体手机</div>
-  <div class="body">
-    中兴努比亚总裁倪飞确认：<b>全球首款AI智能体手机</b>将在WAIC首次公开亮相。联合字节跳动，打破APP壁垒，实现系统级AI自主操作。"量产旗舰，不是概念机。"
+  <div class="bubble b2"></div>
+  <div class="tag-line"><span class="tag-dot"></span><span class="tag">努比亚 × 字节</span><span class="tag-date">7.8 官宣</span></div>
+  <div class="big-line">全球首款 AI 智能体手机 📱</div>
+  <div class="divider"></div>
+  <div class="body-text">
+    中兴努比亚总裁倪飞确认：全球首款 <b>AI 智能体手机</b> 将在 WAIC 首次公开亮相。联合字节跳动，打破 APP 壁垒，实现系统级 AI 自主操作。<br>
+    「<b>量产旗舰</b>，不是概念机。」
   </div>
-  <div class="link-row"><a href="https://www.baidu.com/s?wd=%E5%8A%AA%E6%AF%94%E4%BA%9A+AI%E6%99%BA%E8%83%BD%E4%BD%93%E6%89%8B%E6%9C%BA+WAIC+2026" target="_blank">百度搜索：AI智能体手机详情 →</a></div>
+  <a class="link" href="https://www.baidu.com/s?wd=%E5%8A%AA%E6%AF%94%E4%BA%9A+AI%E6%99%BA%E8%83%BD%E4%BD%93%E6%89%8B%E6%9C%BA+WAIC+2026" target="_blank">百度：AI 智能体手机详情</a>
 </div>
 
 <div class="card c3">
-  <div class="emoji">🤖</div>
-  <div class="title">OpenAI <span class="date-badge">7.10全量上线</span></div>
-  <div class="big">GPT-5.6 Sol 超越 Claude</div>
-  <div class="body">
-    GPT-5.6 Sol获美国政府放行全量上线。编程基准Terminal-Bench 2.1得分<b>91.9%</b>，甩开Claude Fable 5超8个百分点。同步推出ChatGPT Work智能体，可跨应用自主执行任务数小时。
+  <div class="bubble b3"></div>
+  <div class="tag-line"><span class="tag-dot"></span><span class="tag">OpenAI</span><span class="tag-date">7.10 全量上线</span></div>
+  <div class="big-line">GPT-5.6 Sol 超越 Claude 🏆</div>
+  <div class="divider"></div>
+  <div class="body-text">
+    GPT-5.6 Sol 获美国政府放行，全量上线。编程基准 Terminal-Bench 2.1 得分 <b>91.9%</b>，甩开 Claude Fable 5 超 8 个百分点。<br>
+    同步推出 <b>ChatGPT Work</b> 智能体，可跨应用自主执行任务数小时。
   </div>
-  <div class="link-row"><a href="https://zhuanlan.zhihu.com/p/2054164116282124189" target="_blank">知乎：GPT-5.6 系列深度解读 →</a></div>
+  <a class="link" href="https://zhuanlan.zhihu.com/p/2054164116282124189" target="_blank">知乎：GPT-5.6 深度解读</a>
 </div>
 
 <div class="card c4">
-  <div class="emoji">🔥</div>
-  <div class="title">Meta <span class="date-badge">近日</span></div>
-  <div class="big">Muse Spark 1.1 开放API</div>
-  <div class="body">
-    Meta首次推出付费模型API，Muse Spark 1.1向开发者开放，从开源转向<b>商用闭源</b>。消息一出股价短线拉升，跌幅从4%收窄至0.6%。自研IRIS芯片9月投产，2027年算力翻倍至14GW。
+  <div class="bubble b4"></div>
+  <div class="tag-line"><span class="tag-dot"></span><span class="tag">Meta</span><span class="tag-date">近日</span></div>
+  <div class="big-line">Muse Spark 1.1 开放 API 🔥</div>
+  <div class="divider"></div>
+  <div class="body-text">
+    Meta 首次推出付费模型 API，Muse Spark 1.1 向开发者开放，从开源转向 <b>商用闭源</b>。消息一出股价应声拉涨。<br>
+    自研 IRIS 芯片 9 月投产，2027 年算力翻倍至 <b>14GW</b> ⚡️
   </div>
-  <div class="link-row"><a href="https://zhuanlan.zhihu.com/p/2025579312779141146" target="_blank">知乎：Muse Spark 深度分析 →</a></div>
+  <a class="link" href="https://zhuanlan.zhihu.com/p/2025579312779141146" target="_blank">知乎：Muse Spark 深度分析</a>
 </div>
 
 <div class="card c5">
-  <div class="emoji">🦾</div>
-  <div class="title">特斯拉 <span class="date-badge">7.9消息</span></div>
-  <div class="big">Optimus 初步定型</div>
-  <div class="body">
-    特斯拉人形机器人Optimus初步定型，马斯克放话<b>年底前实现产能</b>。弗里蒙特工厂Q3-4完成改造，德州工厂6月土建开工。工信部释放全年产量预期：国内人形机器人<b>冲击10万台</b>。
+  <div class="tag-line"><span class="tag-dot"></span><span class="tag">特斯拉</span><span class="tag-date">7.9 消息</span></div>
+  <div class="big-line">Optimus 初步定型 🤖</div>
+  <div class="divider"></div>
+  <div class="body-text">
+    特斯拉人形机器人 Optimus 初步定型，马斯克放话 <b>年底前实现产能</b>。弗里蒙特工厂 Q3-4 完成改造，德州工厂 6 月土建开工。<br>
+    工信部释放预期：国内人形机器人今年冲击 <b>10 万台</b> 🦾
   </div>
-  <div class="link-row"><a href="https://www.baidu.com/s?wd=%E7%89%B9%E6%96%AF%E6%8B%89+Optimus+%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA+%E5%AE%9A%E5%9E%8B+2026%E5%B9%B47%E6%9C%88" target="_blank">百度搜索：Optimus最新进展 →</a></div>
+  <a class="link" href="https://www.baidu.com/s?wd=%E7%89%B9%E6%96%AF%E6%8B%89+Optimus+%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA+%E5%AE%9A%E5%9E%8B+2026%E5%B9%B47%E6%9C%88" target="_blank">百度：Optimus 最新进展</a>
 </div>
 
 <div class="card c6">
-  <div class="emoji">⚖️</div>
-  <div class="title">苹果 vs OpenAI <span class="date-badge">7.10起诉</span></div>
-  <div class="big">诉讼持续发酵</div>
-  <div class="body">
-    苹果指控OpenAI系统性获取未发布产品机密用于AI硬件研发。要求销毁资料、<b>重新设计AI硬件</b>。2024年的AI合作彻底破裂，产业信任体系被全面重构。
+  <div class="tag-line"><span class="tag-dot"></span><span class="tag">苹果 vs OpenAI</span><span class="tag-date">7.10 起诉</span></div>
+  <div class="big-line">诉讼持续发酵 ⚖️</div>
+  <div class="divider"></div>
+  <div class="body-text">
+    苹果指控 OpenAI 系统性获取未发布产品机密，用于 AI 硬件研发。要求销毁资料、<b>重新设计 AI 硬件</b>。<br>
+    2024 年的 AI 合作彻底破裂，产业信任体系被全面重构 💔
   </div>
-  <div class="link-row"><a href="https://news.qq.com/rain/a/20260711A05R8D00" target="_blank">腾讯新闻：苹果起诉OpenAI始末 →</a></div>
+  <a class="link" href="https://news.qq.com/rain/a/20260711A05R8D00" target="_blank">腾讯新闻：苹果起诉 OpenAI 始末</a>
 </div>
 
 <div class="footer">
-  <p>星链AI · 每日速报 · 2026.7.15</p>
-  <p class="cta">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</p>
+  <div class="dots"><span></span><span></span><span></span></div>
+  <p>星链AI · 每日速报</p>
+  <p class="cta">想让我去你公司看看哪里能用 AI？<br><span class="highlight">厦门预约，私信「诊断」</span></p>
 </div>
+
 </body>
 </html>

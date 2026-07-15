@@ -3,160 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>星链AI速报 · 7.14</title>
+<title>星链AI速报 · 7.15</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: #0a0a10;
-  color: #fff;
-  padding: 24px 16px 60px;
-}
-.cards{
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 420px;
-  margin: 0 auto;
-}
-.card{
-  border-radius: 24px;
-  padding: 30px 24px 24px;
-  position: relative;
-  overflow: hidden;
-}
-.card-tag{
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-  background: rgba(255,255,255,.2);
-  backdrop-filter: blur(4px);
-}
-.card-title{
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 14px;
-  letter-spacing: -1px;
-}
-.card-body{
-  font-size: 14px;
-  line-height: 1.9;
-  opacity: .9;
-}
-.card-body b{font-weight:700}
-.card-links{margin-top:16px;display:flex;flex-direction:column;gap:5px}
-.card-links a{color:#fff;opacity:.8;font-size:13px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);display:inline-block;padding-bottom:2px}
-.card-links .no-link{opacity:.5;font-size:13px}
-.meta{font-size:12px;opacity:.6;margin-top:10px}
-.strike{text-decoration:line-through;opacity:.5;margin-right:6px}
-
-/* VIBRANT CARDS */
-.c0{background:linear-gradient(135deg,#ff512f,#dd2476)}
-.c1{background:linear-gradient(135deg,#11998e,#38ef7d)}
-.c2{background:linear-gradient(135deg,#4facfe,#00f2fe)}
-.c3{background:linear-gradient(135deg,#8e2de2,#4a00e0)}
-.c4{background:linear-gradient(135deg,#f7971e,#ffd200)}
-.c5{background:linear-gradient(135deg,#fc466b,#3f5efb)}
-
-.footer{text-align:center;margin-top:28px;padding:16px 0}
-.footer-brand{font-size:14px;font-weight:600;color:#666;letter-spacing:2px;margin-bottom:10px}
-.footer-cta{font-size:16px;font-weight:700;color:#ff512f;line-height:1.6}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0d0d0d;color:#fff;max-width:440px;margin:0 auto;padding:20px 16px 60px}
+.card{border-radius:16px;padding:28px 24px;margin-bottom:16px;position:relative;overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:center}
+.card::before{content:"";position:absolute;width:200px;height:200px;border-radius:50%;filter:blur(80px);opacity:.35;pointer-events:none}
+.c1{background:#1a1a1a}.c1::before{background:#ff6a3d;top:-40px;right:-40px}
+.c2{background:#1a1a1a}.c2::before{background:#4a90d9;bottom:-60px;left:-40px}
+.c3{background:#1a1a1a}.c3::before{background:#00c9a7;top:40%;left:-30px}
+.c4{background:#1a1a1a}.c4::before{background:#c94dff;bottom:-30px;right:-30px}
+.c5{background:#1a1a1a}.c5::before{background:#5eead4;top:-30px;left:-30px}
+.c6{background:#1a1a1a}.c6::before{background:#f0a500;top:50%;right:-50px}
+.emoji{font-size:18px;margin-bottom:10px;position:relative;z-index:1}
+.title{font-size:15px;color:#888;margin-bottom:8px;position:relative;z-index:1}
+.big{font-size:32px;font-weight:700;line-height:1.2;margin-bottom:16px;position:relative;z-index:1}
+.body{font-size:14px;color:#bbb;line-height:1.8;position:relative;z-index:1}
+a{color:#7eb8ff;text-decoration:none;font-size:13px;word-break:break-all}
+.link-row{margin-top:14px;position:relative;z-index:1;font-size:13px;color:#666}
+.footer{text-align:center;margin-top:24px;padding:20px;border-top:1px solid #222}
+.footer p{color:#888;font-size:13px;margin:4px 0}
+.footer .cta{color:#ff6a3d;font-size:15px;font-weight:600;margin-top:8px}
 </style>
 </head>
 <body>
 
-<div class="cards">
-
-<div class="card c0">
-  <div class="card-tag">大会</div>
-  <div class="card-title">WAIC<br>本周开幕</div>
-  <div class="card-body">
-    上海 · 7.17—20<br>
-    10万㎡ · 1100+企业 · 300+新品首发<br>
-    9位诺奖/图灵奖得主<br>
-    <b>Richard Sutton</b> 主旨演讲
-  </div>
-  <div class="card-links">
-    <a href="https://www.163.com/dy/article/KVL39TEH0530QRMB.html">↗ 人民网报道全文</a>
-  </div>
-</div>
-
 <div class="card c1">
-  <div class="card-tag">硬件</div>
-  <div class="card-title"><span class="strike">纯陪伴</span>办公上位</div>
-  <div class="card-body">
-    Loona 推 <b>Deskmate</b>——具身智能工作伙伴<br>
-    Ropet 走机器宠物路线，已卖近<b>2万台</b><br>
-    能干活的才站得住
-  </div>
-  <div class="card-links">
-    <a href="https://zhuanlan.zhihu.com/p/1995162741904787045">↗ Loona Deskmate</a>
-    <a href="https://zhuanlan.zhihu.com/p/1967559907499827208">↗ Ropet 机器宠物</a>
+  <div class="emoji">🔑</div>
+  <div class="title">WAIC 2026</div>
+  <div class="big">倒计时2天</div>
+  <div class="body">
+    世界人工智能大会7.17-20上海开幕，习近平出席。<br>
+    智元机器人发布远征A3 Ultra、精灵G2 Max；MiniMax M3多模态大模型、阶跃Agent操作系统将展出。会前已达成<span class="highlight">162亿元</span>意向合作。
   </div>
 </div>
 
 <div class="card c2">
-  <div class="card-tag">大模型</div>
-  <div class="card-title">推理成本砍半</div>
-  <div class="card-body">
-    GPT-5.6 上线，底层优化驱动<br>
-    不是降价，是软硬件一体压缩<br>
-    本地 vs 云端的性价比差距在缩小
+  <div class="emoji">🤖</div>
+  <div class="title">OpenAI</div>
+  <div class="big">GPT-5.6 发布</div>
+  <div class="body">
+    三款模型：旗舰<span class="highlight">Sol</span>、均衡<span class="highlight">Terra</span>、低成本<span class="highlight">Luna</span>。<br>
+    同步推出 ChatGPT Work 智能体，可跨应用持续执行任务数小时。推理成本降低50%以上。
   </div>
-  <div class="card-links">
-    <span class="no-link">🔍 搜「GPT-5.6 推理成本」</span>
-  </div>
+  <div class="link-row"><a href="https://zhuanlan.zhihu.com/p/2054164116282124189" target="_blank">知乎：GPT-5.6深度解读 →</a></div>
 </div>
 
 <div class="card c3">
-  <div class="card-tag">机器人</div>
-  <div class="card-title">量产破万</div>
-  <div class="card-body">
-    一个季度，5000→<b>10000台</b><br>
-    远征系列进入美国CES<br>
-    BOM 14-20万，家庭尚远
-  </div>
-  <div class="meta">宇树科技 IPO 获批 · 科创板最快 104 天</div>
-  <div class="card-links">
-    <a href="https://www.agibot.com.cn/">↗ 智元官网</a>
+  <div class="emoji">⚖️</div>
+  <div class="title">苹果 vs OpenAI</div>
+  <div class="big">诉讼升级</div>
+  <div class="body">
+    7月10日苹果起诉OpenAI窃取商业机密，指控其鼓动员工分享未发布产品信息来开发AI硬件。要求销毁资料、<span class="highlight">重新设计AI硬件</span>。2024年的AI合作彻底破裂。
   </div>
 </div>
 
 <div class="card c4">
-  <div class="card-tag">政策</div>
-  <div class="card-title">高校必修课</div>
-  <div class="card-body">
-    教育部发文<br>
-    AI纳入高等教育公共基础课程<br>
-    覆盖所有专业
-  </div>
-  <div class="card-links">
-    <span class="no-link">🔍 搜「AI 高等教育 必修课」</span>
+  <div class="emoji">🏗️</div>
+  <div class="title">国产算力</div>
+  <div class="big">十万卡集群落成</div>
+  <div class="body">
+    中国首个全国产<span class="highlight">十万卡AI超集群"曙光8000"</span>正式落成，接入国家超算互联网。第二套十万卡系统已启动研制，AI基建从万卡级迈入十万卡级。
   </div>
 </div>
 
 <div class="card c5">
-  <div class="card-tag">产业</div>
-  <div class="card-title">1.2 万亿</div>
-  <div class="card-body">
-    企业超<b>6200家</b>，产业规模突破<br>
-    2026 产业转折年<br>
-    大模型·智能体·具身智能 三线并进
+  <div class="emoji">📊</div>
+  <div class="title">2026趋势</div>
+  <div class="big">AI Agent爆发元年</div>
+  <div class="body">
+    企业预算30%投向智能体管理平台，关注点从大模型能力转向<span class="highlight">智能体应用</span>。多智能体协同与人机协同成为主流，AI从"会说"走向"会做"。
   </div>
 </div>
 
+<div class="card c6">
+  <div class="emoji">🚛</div>
+  <div class="title">无人货运</div>
+  <div class="big">卡尔动力B轮融资</div>
+  <div class="body">
+    超1亿美元B轮，地平线+高榕创投领投。行业首家干线无人货运<span class="highlight">商业化闭环</span>，累计货运12亿吨公里，年内部署千台无人卡车。
+  </div>
 </div>
 
 <div class="footer">
-  <div class="footer-brand">星链 AI · 每日速报</div>
-  <div class="footer-cta">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</div>
+  <p>星链AI · 每日速报</p>
+  <p class="cta">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</p>
 </div>
-
 </body>
 </html>

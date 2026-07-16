@@ -33,20 +33,96 @@ body::before {
 
 /* ===== HEADER ===== */
 .header {
-  background: linear-gradient(180deg, #5c3d3d 0%, #6b4a4a 100%);
+  background: 
+    /* circuit grid pattern */
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+    /* warm gradient base */
+    linear-gradient(180deg, #4a2e2e 0%, #5c3d3d 40%, #6b4a4a 100%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
   margin: 0 -18px 28px;
   padding: 28px 18px 24px;
   text-align: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
+
+/* Glowing orbs in header */
+.header::before {
+  content: '';
+  position: absolute;
+  width: 180px; height: 180px;
+  top: -60px; right: -40px;
+  background: radial-gradient(circle, rgba(196,122,122,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: headerGlow 6s ease-in-out infinite;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  width: 120px; height: 120px;
+  bottom: -20px; left: -30px;
+  background: radial-gradient(circle, rgba(160,128,144,0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: headerGlow 8s ease-in-out infinite reverse;
+}
+
+/* Sticker decorations inside header */
+.header-stickers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.sticker {
+  position: absolute;
+  font-size: 18px;
+  opacity: 0.3;
+  animation: floatSlow 5s ease-in-out infinite;
+}
+.hs1 { top: 12px; left: 15%; font-size: 22px; animation-delay: 0s; }
+.hs2 { top: 18px; right: 12%; font-size: 16px; animation-delay: 1s; }
+.hs3 { bottom: 14px; left: 8%; font-size: 20px; animation-delay: 2s; }
+.hs4 { bottom: 20px; right: 20%; font-size: 14px; animation-delay: 0.5s; }
+.hs5 { top: 40%; left: 5%; font-size: 12px; animation-delay: 1.5s; opacity: 0.2; }
+.hs6 { top: 35%; right: 8%; font-size: 15px; animation-delay: 2.5s; opacity: 0.25; }
+
+/* Tech dots */
+.tech-dot {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.td1 { top: 15%; left: 25%; animation: twinkle 4s ease-in-out infinite; }
+.td2 { top: 25%; left: 45%; animation: twinkle 5s ease-in-out infinite 1s; }
+.td3 { top: 35%; right: 30%; animation: twinkle 3.5s ease-in-out infinite 0.5s; }
+.td4 { top: 55%; left: 35%; animation: twinkle 4.5s ease-in-out infinite 2s; }
+.td5 { top: 65%; right: 25%; animation: twinkle 5.5s ease-in-out infinite 1.5s; }
+.td6 { top: 75%; left: 55%; animation: twinkle 3s ease-in-out infinite 3s; }
+.td7 { top: 20%; left: 60%; animation: twinkle 4s ease-in-out infinite 0.8s; }
+.td8 { top: 50%; right: 40%; animation: twinkle 6s ease-in-out infinite 2.5s; }
+
+@keyframes headerGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
 .header .banner {
   display: inline-block;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 40px;
   padding: 5px 20px;
   margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
 }
 .header .banner span {
   font-size: 11px;
@@ -57,6 +133,8 @@ body::before {
 .header .mascot {
   font-size: 44px;
   margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
 }
 .header h1 {
   font-size: 24px;
@@ -64,12 +142,16 @@ body::before {
   color: #f5ede8;
   margin-bottom: 4px;
   letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
 }
 .header .date {
   font-size: 12px;
   color: #c4a8a8;
   font-weight: 500;
   letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== CARDS ===== */
@@ -331,6 +413,22 @@ body::before {
   <div class="mascot">☕</div>
   <h1>星链AI · 今日速报</h1>
   <div class="date">2026.07.16 周四</div>
+  <div class="header-stickers">
+    <span class="sticker hs1">✦</span>
+    <span class="sticker hs2">◇</span>
+    <span class="sticker hs3">○</span>
+    <span class="sticker hs4">△</span>
+    <span class="sticker hs5">◆</span>
+    <span class="sticker hs6">▹</span>
+  </div>
+  <div class="tech-dot td1"></div>
+  <div class="tech-dot td2"></div>
+  <div class="tech-dot td3"></div>
+  <div class="tech-dot td4"></div>
+  <div class="tech-dot td5"></div>
+  <div class="tech-dot td6"></div>
+  <div class="tech-dot td7"></div>
+  <div class="tech-dot td8"></div>
 </div>
 
 <div class="tabs-wrapper">

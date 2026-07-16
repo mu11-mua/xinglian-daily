@@ -9,7 +9,27 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: linear-gradient(170deg, #fff0f5 0%, #fce4ec 25%, #f3e5f5 50%, #e8eaf6 75%, #e3f2fd 100%);
+  background-color: #fff5f7;
+  background-image:
+    /* white polka dots */
+    radial-gradient(circle, rgba(255,255,255,0.55) 2px, transparent 2px),
+    /* mint green blob top-left */
+    radial-gradient(ellipse 600px 500px at 10% 5%, #d1fae5cc 0%, transparent 100%),
+    /* pale yellow blob middle-right */
+    radial-gradient(ellipse 500px 450px at 90% 55%, #fef9c3aa 0%, transparent 100%),
+    /* hot pink blob bottom */
+    radial-gradient(ellipse 550px 400px at 60% 90%, #fce7f3cc 0%, transparent 100%),
+    /* lavender blob top-right */
+    radial-gradient(ellipse 400px 350px at 85% 15%, #ede9feaa 0%, transparent 100%),
+    /* peach blob left-middle */
+    radial-gradient(ellipse 450px 400px at 5% 65%, #ffedd5aa 0%, transparent 100%);
+  background-size:
+    28px 28px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
   background-attachment: fixed;
   min-height: 100vh;
   padding: 32px 18px 50px;
@@ -17,29 +37,55 @@ body {
   overflow-x: hidden;
 }
 
-/* Floating decorations */
+/* Floating candy decorations — body::before */
 body::before {
-  content: '🌸';
+  content: '🍬';
   position: fixed;
-  top: 30px;
-  left: 20px;
-  font-size: 28px;
-  opacity: 0.5;
-  animation: floatSlow 8s ease-in-out infinite;
+  top: 25px;
+  left: 18px;
+  font-size: 30px;
+  opacity: 0.55;
+  animation: floatSlow 6s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
 }
 body::after {
-  content: '✨';
+  content: '🍭';
   position: fixed;
-  top: 80px;
-  right: 25px;
-  font-size: 24px;
-  opacity: 0.45;
+  top: 70px;
+  right: 22px;
+  font-size: 26px;
+  opacity: 0.5;
   animation: floatSlow 7s ease-in-out infinite reverse;
   pointer-events: none;
   z-index: 0;
 }
+
+/* Extra candy layer via wrapper — injected as first child via JS or we add more pseudo to html */
+/* We'll use a fixed overlay div for rainbow bubbles */
+.candy-overlay {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.candy-overlay .gloss-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.7), rgba(255,182,193,0.2) 50%, rgba(216,180,254,0.1) 100%);
+  animation: floatBubble 7s ease-in-out infinite;
+}
+.candy-overlay .gb1 { width: 60px; height: 60px; top: 12%; left: 8%; animation-delay: 0s; }
+.candy-overlay .gb2 { width: 45px; height: 45px; top: 25%; right: 10%; animation-delay: 2s; animation-duration: 6s; }
+.candy-overlay .gb3 { width: 38px; height: 38px; bottom: 20%; left: 12%; animation-delay: 4s; animation-duration: 5.5s; }
+.candy-overlay .gb4 { width: 50px; height: 50px; top: 55%; right: 6%; animation-delay: 1s; animation-duration: 8s; }
+.candy-overlay .sparkle {
+  position: absolute;
+  font-size: 16px;
+  animation: twinkle 3s ease-in-out infinite;
+  opacity: 0.5;
+}
+.candy-overlay .sp1 { top: 40px; right: 35%; font-size: 18px; animation-delay: 0s; }
+.candy-overlay .sp2 { bottom: 60px; left: 25%; font-size: 14px; animation-delay: 1s; }
+.candy-overlay .sp3 { top: 50%; left: 50%; font-size: 20px; animation-delay: 2s; }
+.candy-overlay .sp4 { top: 120px; right: 15%; font-size: 13px; animation-delay: 0.5s; }
 
 @keyframes floatSlow {
   0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -63,7 +109,7 @@ body::after {
 }
 .header .banner {
   display: inline-block;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+  background: linear-gradient(135deg, #f9a8d4, #fbcfe8, #fef3c7);
   border-radius: 40px;
   padding: 4px 20px;
   margin-bottom: 12px;
@@ -240,8 +286,9 @@ body::after {
 }
 .footer .cta-card {
   display: inline-block;
-  background: linear-gradient(135deg, #fff0f5, #fce4ec);
-  border: 2px dashed #f9a8d4;
+  background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(252,231,243,0.6));
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(251,207,232,0.4);
   border-radius: 20px;
   padding: 16px 28px;
   box-shadow: 0 3px 15px rgba(249,168,212,0.15);
@@ -272,6 +319,17 @@ body::after {
 </style>
 </head>
 <body>
+
+<div class="candy-overlay">
+  <div class="gloss-bubble gb1"></div>
+  <div class="gloss-bubble gb2"></div>
+  <div class="gloss-bubble gb3"></div>
+  <div class="gloss-bubble gb4"></div>
+  <div class="sparkle sp1">✨</div>
+  <div class="sparkle sp2">💖</div>
+  <div class="sparkle sp3">⭐</div>
+  <div class="sparkle sp4">🫧</div>
+</div>
 
 <div class="header">
   <div class="banner"><span>✦ DAILY BRIEFING ✦</span></div>

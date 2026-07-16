@@ -153,40 +153,95 @@ body::after {
   margin-bottom: 18px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.3s;
 }
+.card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
 .card:active { transform: scale(0.985); }
+
+/* Glossy sweep across all cards */
+.card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.45) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+}
 
 .card-inner { position: relative; z-index: 2; }
 
-/* Per-card colors */
-.card-pink   { background: linear-gradient(135deg, #fff0f5 0%, #ffe0ea 100%); border: 2px solid #ffccd5; box-shadow: 0 4px 20px rgba(255,182,193,0.2); }
-.card-purple { background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); border: 2px solid #e9d5ff; box-shadow: 0 4px 20px rgba(216,180,254,0.2); }
-.card-mint   { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #bbf7d0; box-shadow: 0 4px 20px rgba(187,247,208,0.2); }
-.card-peach  { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid #fed7aa; box-shadow: 0 4px 20px rgba(254,215,170,0.25); }
-.card-blue   { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2px solid #bfdbfe; box-shadow: 0 4px 20px rgba(191,219,254,0.2); }
-.card-lav    { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border: 2px solid #fbcfe8; box-shadow: 0 4px 20px rgba(251,207,232,0.2); }
+/* Per-card colors — richer gradients + thicker borders */
+.card-pink   { background: linear-gradient(150deg, #fff5f7 0%, #ffe0ea 40%, #ffd6e0 100%); border: 2.5px solid #ffb3c6; box-shadow: 0 4px 20px rgba(255,154,170,0.18); }
+.card-purple { background: linear-gradient(150deg, #fdfaff 0%, #f3e8ff 40%, #e9d5ff 100%); border: 2.5px solid #d8b4fe; box-shadow: 0 4px 20px rgba(196,167,254,0.18); }
+.card-mint   { background: linear-gradient(150deg, #f5fff9 0%, #dcfce7 40%, #c7f9d2 100%); border: 2.5px solid #86efac; box-shadow: 0 4px 20px rgba(134,239,172,0.18); }
+.card-peach  { background: linear-gradient(150deg, #fffaf5 0%, #ffedd5 40%, #ffe0bb 100%); border: 2.5px solid #fdba74; box-shadow: 0 4px 20px rgba(251,191,116,0.2); }
+.card-blue   { background: linear-gradient(150deg, #f7faff 0%, #dbeafe 40%, #c7ddfe 100%); border: 2.5px solid #93c5fd; box-shadow: 0 4px 20px rgba(147,197,253,0.18); }
+.card-lav    { background: linear-gradient(150deg, #fef6fa 0%, #fce7f3 40%, #fbcfe8 100%); border: 2.5px solid #f9a8d4; box-shadow: 0 4px 20px rgba(249,168,212,0.18); }
 
-/* Bubble decorations */
+/* ======== BUBBLE DECORATIONS ======== */
 .bubble {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
 }
-.b1 { width: 50px; height: 50px; background: rgba(255,182,193,0.3); top: 10px; right: 18px; animation: floatBubble 5s ease-in-out infinite; }
-.b2 { width: 35px; height: 35px; background: rgba(216,180,254,0.25); bottom: 20px; right: 40px; animation: floatBubble 6s ease-in-out infinite reverse; }
-.b3 { width: 28px; height: 28px; background: rgba(167,243,208,0.3); top: 25px; right: 50px; animation: floatBubble 4.5s ease-in-out infinite 1s; }
+/* Large glossy bubble top-right */
+.b1 { width: 55px; height: 55px; top: 8px; right: 14px; animation: floatBubble 5s ease-in-out infinite; }
+/* Medium bubble bottom-right */
+.b2 { width: 38px; height: 38px; bottom: 16px; right: 36px; animation: floatBubble 6s ease-in-out infinite reverse; }
+/* Small bubble top area */
+.b3 { width: 26px; height: 26px; top: 22px; right: 55px; animation: floatBubble 4.5s ease-in-out infinite 1s; }
+/* Tiny accent dot */
+.b4 { width: 16px; height: 16px; bottom: 10px; right: 80px; animation: floatBubble 4s ease-in-out infinite 0.5s; }
 
+/* Bubble colors per card */
+.card-pink .b1   { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,154,170,0.25)); }
+.card-pink .b2   { background: rgba(251,154,170,0.22); }
+.card-pink .b3   { background: rgba(255,182,193,0.3); }
+.card-pink .b4   { background: rgba(255,154,170,0.2); }
+
+.card-purple .b1 { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(196,167,254,0.25)); }
+.card-purple .b2 { background: rgba(216,180,254,0.22); }
+.card-purple .b3 { background: rgba(196,167,254,0.3); }
+.card-purple .b4 { background: rgba(216,180,254,0.2); }
+
+.card-mint .b1   { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(134,239,172,0.25)); }
+.card-mint .b2   { background: rgba(167,243,208,0.22); }
+.card-mint .b3   { background: rgba(134,239,172,0.3); }
+.card-mint .b4   { background: rgba(167,243,208,0.2); }
+
+.card-peach .b1  { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(251,191,116,0.25)); }
+.card-peach .b2  { background: rgba(254,215,170,0.22); }
+.card-peach .b3  { background: rgba(251,191,116,0.3); }
+.card-peach .b4  { background: rgba(254,215,170,0.2); }
+
+.card-blue .b1   { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(147,197,253,0.25)); }
+.card-blue .b2   { background: rgba(191,219,254,0.22); }
+.card-blue .b3   { background: rgba(147,197,253,0.3); }
+.card-blue .b4   { background: rgba(191,219,254,0.2); }
+
+.card-lav .b1    { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(249,168,212,0.25)); }
+.card-lav .b2    { background: rgba(251,207,232,0.22); }
+.card-lav .b3    { background: rgba(249,168,212,0.3); }
+.card-lav .b4    { background: rgba(251,207,232,0.2); }
+
+/* ======== STAR/ACCENT DECORATIONS ======== */
 .star {
   position: absolute;
   pointer-events: none;
   z-index: 0;
-  font-size: 14px;
+  font-size: 15px;
   animation: twinkle 3s ease-in-out infinite;
 }
-.s1 { top: 8px; right: 30px; animation-delay: 0s; }
-.s2 { bottom: 16px; right: 60px; animation-delay: 1.5s; }
+.s1 { top: 6px; right: 28px; animation-delay: 0s; font-size: 16px; }
+.s2 { bottom: 14px; right: 58px; animation-delay: 1.5s; font-size: 13px; }
+/* New accent positions */
+.s3 { top: 30px; right: 74px; animation-delay: 0.8s; font-size: 12px; }
+.s4 { bottom: 30px; left: 20px; animation-delay: 2.2s; font-size: 18px; }
 
 /* Tag */
 .tag {
@@ -343,7 +398,9 @@ body::after {
 <!-- 1: WAIC -->
 <div class="card card-pink">
   <div class="bubble b1"></div>
+  <div class="bubble b4"></div>
   <div class="star s1">💫</div>
+  <div class="star s3">🫧</div>
   <div class="card-inner">
     <div class="tag"><span class="emoji">🏛️</span> 明日开幕</div>
     <h2>WAIC 2026 上海·明天见</h2>
@@ -357,7 +414,9 @@ body::after {
 <!-- 2: 智能体关闭 -->
 <div class="card card-purple">
   <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
   <div class="star s2">⚡</div>
+  <div class="star s4">💜</div>
   <div class="card-inner">
     <div class="tag"><span class="emoji">🚫</span> 行业地震</div>
     <h2>豆包 & 通义千问 同步关停自建智能体</h2>
@@ -370,7 +429,10 @@ body::after {
 
 <!-- 3: 新规 -->
 <div class="card card-mint">
+  <div class="bubble b1"></div>
   <div class="bubble b3"></div>
+  <div class="bubble b4"></div>
+  <div class="star s1">🍃</div>
   <div class="card-inner">
     <div class="tag"><span class="emoji">⚖️</span> 监管落地</div>
     <h2>《AI拟人化互动暂行办法》昨起施行</h2>
@@ -383,8 +445,10 @@ body::after {
 
 <!-- 4: Apple vs OpenAI -->
 <div class="card card-peach">
-  <div class="bubble b1" style="background:rgba(254,215,170,0.25); width:40px;height:40px;"></div>
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
   <div class="star s1">🔥</div>
+  <div class="star s3">🍊</div>
   <div class="card-inner">
     <div class="tag"><span class="emoji">🍎</span> 硅谷大战</div>
     <h2>苹果起诉 OpenAI 窃取商业机密</h2>
@@ -397,7 +461,10 @@ body::after {
 
 <!-- 5: GPT-5.6 -->
 <div class="card card-blue">
-  <div class="bubble b2" style="background:rgba(191,219,254,0.3); width:36px;height:36px;"></div>
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b4"></div>
+  <div class="star s2">💎</div>
   <div class="card-inner">
     <div class="tag"><span class="emoji">🤖</span> 模型上新</div>
     <h2>OpenAI 发布 GPT-5.6 + ChatGPT Work</h2>
@@ -410,7 +477,9 @@ body::after {
 
 <!-- 6: Agent market -->
 <div class="card card-lav">
-  <div class="bubble b3" style="background:rgba(251,207,232,0.25); width:34px;height:34px;"></div>
+  <div class="bubble b1"></div>
+  <div class="bubble b3"></div>
+  <div class="star s1">🌸</div>
   <div class="star s2">📊</div>
   <div class="card-inner">
     <div class="tag"><span class="emoji">💰</span> 产业数据</div>

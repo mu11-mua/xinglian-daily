@@ -149,38 +149,100 @@ body::after {
 }
 .card {
   border-radius: 24px;
-  padding: 22px 20px 18px;
-  margin-bottom: 18px;
+  padding: 0 0 18px 0;
+  margin-bottom: 22px;
   position: relative;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.3s;
+  background: #fff;
+  border: none;
 }
-.card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.card:hover { transform: translateY(-2px); }
 .card:active { transform: scale(0.985); }
 
-/* Glossy sweep across all cards */
-.card::after {
+/* ===== TOP COLOR RIBBON ===== */
+.card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.45) 0%, transparent 55%);
-  pointer-events: none;
-  z-index: 1;
-  border-radius: 50%;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  z-index: 3;
+  border-radius: 24px 24px 0 0;
 }
 
-.card-inner { position: relative; z-index: 2; }
+/* ===== INNER CONTENT AREA ===== */
+.card-inner { 
+  position: relative; 
+  z-index: 2; 
+  padding: 28px 20px 0;
+}
 
-/* Per-card colors — richer gradients + thicker borders */
-.card-pink   { background: linear-gradient(150deg, #fff5f7 0%, #ffe0ea 40%, #ffd6e0 100%); border: 2.5px solid #ffb3c6; box-shadow: 0 4px 20px rgba(255,154,170,0.18); }
-.card-purple { background: linear-gradient(150deg, #fdfaff 0%, #f3e8ff 40%, #e9d5ff 100%); border: 2.5px solid #d8b4fe; box-shadow: 0 4px 20px rgba(196,167,254,0.18); }
-.card-mint   { background: linear-gradient(150deg, #f5fff9 0%, #dcfce7 40%, #c7f9d2 100%); border: 2.5px solid #86efac; box-shadow: 0 4px 20px rgba(134,239,172,0.18); }
-.card-peach  { background: linear-gradient(150deg, #fffaf5 0%, #ffedd5 40%, #ffe0bb 100%); border: 2.5px solid #fdba74; box-shadow: 0 4px 20px rgba(251,191,116,0.2); }
-.card-blue   { background: linear-gradient(150deg, #f7faff 0%, #dbeafe 40%, #c7ddfe 100%); border: 2.5px solid #93c5fd; box-shadow: 0 4px 20px rgba(147,197,253,0.18); }
-.card-lav    { background: linear-gradient(150deg, #fef6fa 0%, #fce7f3 40%, #fbcfe8 100%); border: 2.5px solid #f9a8d4; box-shadow: 0 4px 20px rgba(249,168,212,0.18); }
+/* Per-card colors */
+.card-pink   { box-shadow: 0 6px 24px rgba(255,105,135,0.12); }
+.card-pink::before { background: linear-gradient(90deg, #ff6b8a, #ff9aad, #ffb3c6); }
+.card-pink .card-inner { background: linear-gradient(180deg, #fff5f7 0%, #fff 100%); border-radius: 0 0 24px 24px; padding-top: 22px; }
+
+.card-purple { box-shadow: 0 6px 24px rgba(168,85,247,0.12); }
+.card-purple::before { background: linear-gradient(90deg, #a855f7, #c084fc, #d8b4fe); }
+.card-purple .card-inner { background: linear-gradient(180deg, #faf5ff 0%, #fff 100%); border-radius: 0 0 24px 24px; padding-top: 22px; }
+
+.card-mint   { box-shadow: 0 6px 24px rgba(34,197,94,0.12); }
+.card-mint::before { background: linear-gradient(90deg, #22c55e, #4ade80, #86efac); }
+.card-mint .card-inner { background: linear-gradient(180deg, #f0fdf4 0%, #fff 100%); border-radius: 0 0 24px 24px; padding-top: 22px; }
+
+.card-peach  { box-shadow: 0 6px 24px rgba(249,115,22,0.12); }
+.card-peach::before { background: linear-gradient(90deg, #f97316, #fb923c, #fdba74); }
+.card-peach .card-inner { background: linear-gradient(180deg, #fff7ed 0%, #fff 100%); border-radius: 0 0 24px 24px; padding-top: 22px; }
+
+.card-blue   { box-shadow: 0 6px 24px rgba(59,130,246,0.12); }
+.card-blue::before { background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd); }
+.card-blue .card-inner { background: linear-gradient(180deg, #eff6ff 0%, #fff 100%); border-radius: 0 0 24px 24px; padding-top: 22px; }
+
+.card-lav    { box-shadow: 0 6px 24px rgba(236,72,153,0.12); }
+.card-lav::before { background: linear-gradient(90deg, #ec4899, #f472b6, #f9a8d4); }
+.card-lav .card-inner { background: linear-gradient(180deg, #fdf2f8 0%, #fff 100%); border-radius: 0 0 24px 24px; padding-top: 22px; }
+
+/* ===== BUBBLE DECORATIONS ===== */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.b1 { width: 70px; height: 70px; top: 36px; right: 10px; animation: floatBubble 5s ease-in-out infinite; }
+.b2 { width: 45px; height: 45px; bottom: 28px; right: 30px; animation: floatBubble 6s ease-in-out infinite reverse; }
+.b3 { width: 30px; height: 30px; top: 50px; right: 80px; animation: floatBubble 4.5s ease-in-out infinite 1s; }
+.b4 { width: 22px; height: 22px; bottom: 20px; right: 85px; animation: floatBubble 4s ease-in-out infinite 0.5s; }
+
+.card-pink .b1   { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(255,105,135,0.18)); }
+.card-pink .b2   { background: rgba(255,154,170,0.2); }
+.card-pink .b3   { background: rgba(255,179,198,0.25); }
+.card-pink .b4   { background: rgba(255,105,135,0.15); }
+
+.card-purple .b1 { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(168,85,247,0.18)); }
+.card-purple .b2 { background: rgba(196,167,254,0.2); }
+.card-purple .b3 { background: rgba(216,180,254,0.25); }
+.card-purple .b4 { background: rgba(168,85,247,0.15); }
+
+.card-mint .b1   { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(34,197,94,0.18)); }
+.card-mint .b2   { background: rgba(134,239,172,0.2); }
+.card-mint .b3   { background: rgba(74,222,128,0.25); }
+.card-mint .b4   { background: rgba(34,197,94,0.15); }
+
+.card-peach .b1  { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(249,115,22,0.18)); }
+.card-peach .b2  { background: rgba(253,186,116,0.2); }
+.card-peach .b3  { background: rgba(251,146,60,0.25); }
+.card-peach .b4  { background: rgba(249,115,22,0.15); }
+
+.card-blue .b1   { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(59,130,246,0.18)); }
+.card-blue .b2   { background: rgba(147,197,253,0.2); }
+.card-blue .b3   { background: rgba(96,165,250,0.25); }
+.card-blue .b4   { background: rgba(59,130,246,0.15); }
+
+.card-lav .b1    { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(236,72,153,0.18)); }
+.card-lav .b2    { background: rgba(249,168,212,0.2); }
+.card-lav .b3    { background: rgba(244,114,182,0.25); }
+.card-lav .b4    { background: rgba(236,72,153,0.15); }
 
 /* ======== BUBBLE DECORATIONS ======== */
 .bubble {
@@ -237,11 +299,10 @@ body::after {
   font-size: 15px;
   animation: twinkle 3s ease-in-out infinite;
 }
-.s1 { top: 6px; right: 28px; animation-delay: 0s; font-size: 16px; }
-.s2 { bottom: 14px; right: 58px; animation-delay: 1.5s; font-size: 13px; }
-/* New accent positions */
-.s3 { top: 30px; right: 74px; animation-delay: 0.8s; font-size: 12px; }
-.s4 { bottom: 30px; left: 20px; animation-delay: 2.2s; font-size: 18px; }
+.s1 { top: 28px; right: 18px; animation-delay: 0s; font-size: 18px; }
+.s2 { bottom: 22px; right: 50px; animation-delay: 1.5s; font-size: 14px; }
+.s3 { top: 55px; right: 70px; animation-delay: 0.8s; font-size: 13px; }
+.s4 { bottom: 40px; left: 16px; animation-delay: 2.2s; font-size: 20px; }
 
 /* Tag */
 .tag {

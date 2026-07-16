@@ -6,270 +6,372 @@
 <title>星链AI·今日速报 7.16</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: linear-gradient(180deg, #fef9f0 0%, #fdf2f8 40%, #f0f4ff 100%);
+  background: linear-gradient(170deg, #fff0f5 0%, #fce4ec 25%, #f3e5f5 50%, #e8eaf6 75%, #e3f2fd 100%);
+  background-attachment: fixed;
   min-height: 100vh;
-  padding: 24px 16px 40px;
+  padding: 32px 18px 50px;
   position: relative;
   overflow-x: hidden;
 }
+
+/* Floating decorations */
 body::before {
-  content: '';
+  content: '🌸';
   position: fixed;
-  top: -80px;
-  right: -60px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(255,182,193,0.25) 0%, transparent 70%);
-  border-radius: 50%;
+  top: 30px;
+  left: 20px;
+  font-size: 28px;
+  opacity: 0.5;
+  animation: floatSlow 8s ease-in-out infinite;
   pointer-events: none;
+  z-index: 0;
 }
 body::after {
-  content: '';
+  content: '✨';
   position: fixed;
-  bottom: -40px;
-  left: -50px;
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle, rgba(173,216,230,0.2) 0%, transparent 70%);
-  border-radius: 50%;
+  top: 80px;
+  right: 25px;
+  font-size: 24px;
+  opacity: 0.45;
+  animation: floatSlow 7s ease-in-out infinite reverse;
   pointer-events: none;
+  z-index: 0;
 }
 
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+@keyframes floatBubble {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-12px) scale(1.15); opacity: 0.9; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+/* ======== HEADER ======== */
 .header {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   position: relative;
   z-index: 1;
 }
-.header .icon { font-size: 36px; margin-bottom: 6px; }
+.header .banner {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+  border-radius: 40px;
+  padding: 4px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 15px rgba(255,154,158,0.25);
+}
+.header .banner span {
+  font-size: 12px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.header .mascot {
+  font-size: 48px;
+  margin-bottom: 8px;
+  animation: floatSlow 5s ease-in-out infinite;
+}
 .header h1 {
-  font-size: 22px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #d4685a, #c97d60);
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #e8526b, #f093b0, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .header .date {
   font-size: 13px;
-  color: #b0a0b0;
-  letter-spacing: 1px;
-}
-.header .dots {
-  margin-top: 8px;
-  color: #dcc;
-  font-size: 10px;
-  letter-spacing: 4px;
+  color: #c9a0b0;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
-.card {
-  border-radius: 20px;
-  padding: 20px 18px;
-  margin-bottom: 16px;
+/* ======== CARDS ======== */
+.cards {
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(255,255,255,0.6);
   z-index: 1;
 }
-.card::after {
-  content: '';
+.card {
+  border-radius: 24px;
+  padding: 22px 20px 18px;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.card:active { transform: scale(0.985); }
+
+.card-inner { position: relative; z-index: 2; }
+
+/* Per-card colors */
+.card-pink   { background: linear-gradient(135deg, #fff0f5 0%, #ffe0ea 100%); border: 2px solid #ffccd5; box-shadow: 0 4px 20px rgba(255,182,193,0.2); }
+.card-purple { background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); border: 2px solid #e9d5ff; box-shadow: 0 4px 20px rgba(216,180,254,0.2); }
+.card-mint   { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #bbf7d0; box-shadow: 0 4px 20px rgba(187,247,208,0.2); }
+.card-peach  { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 2px solid #fed7aa; box-shadow: 0 4px 20px rgba(254,215,170,0.25); }
+.card-blue   { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2px solid #bfdbfe; box-shadow: 0 4px 20px rgba(191,219,254,0.2); }
+.card-lav    { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border: 2px solid #fbcfe8; box-shadow: 0 4px 20px rgba(251,207,232,0.2); }
+
+/* Bubble decorations */
+.bubble {
   position: absolute;
-  width: 40px; height: 40px;
   border-radius: 50%;
-  opacity: 0.35;
   pointer-events: none;
-  animation: float 6s ease-in-out infinite;
+  z-index: 0;
 }
+.b1 { width: 50px; height: 50px; background: rgba(255,182,193,0.3); top: 10px; right: 18px; animation: floatBubble 5s ease-in-out infinite; }
+.b2 { width: 35px; height: 35px; background: rgba(216,180,254,0.25); bottom: 20px; right: 40px; animation: floatBubble 6s ease-in-out infinite reverse; }
+.b3 { width: 28px; height: 28px; background: rgba(167,243,208,0.3); top: 25px; right: 50px; animation: floatBubble 4.5s ease-in-out infinite 1s; }
 
-.card-1 { background: #fff5f5; border: 1.5px solid #fdd4d4; }
-.card-1::after { background: #ffcdd2; top: 12px; right: 20px; animation-delay: 0s; }
-.card-2 { background: #f5f8ff; border: 1.5px solid #d4dffd; }
-.card-2::after { background: #c5d3f8; top: 30px; right: 40px; animation-delay: -2s; width: 30px; height: 30px; }
-.card-3 { background: #f5fff8; border: 1.5px solid #d4fde0; }
-.card-3::after { background: #c8f7d5; bottom: 15px; right: 25px; animation-delay: -4s; width: 36px; height: 36px; }
-.card-4 { background: #fef5ff; border: 1.5px solid #f0d4fd; }
-.card-4::after { background: #e8d0f8; top: 18px; right: 35px; animation-delay: -1s; width: 28px; height: 28px; }
-.card-5 { background: #fffaf3; border: 1.5px solid #fde8c8; }
-.card-5::after { background: #fde0b0; bottom: 20px; right: 18px; animation-delay: -3s; width: 34px; height: 34px; }
-.card-6 { background: #f3faff; border: 1.5px solid #c8e6fd; }
-.card-6::after { background: #b8daf8; top: 25px; right: 30px; animation-delay: -5s; width: 32px; height: 32px; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-8px) scale(1.08); }
+.star {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  font-size: 14px;
+  animation: twinkle 3s ease-in-out infinite;
 }
+.s1 { top: 8px; right: 30px; animation-delay: 0s; }
+.s2 { bottom: 16px; right: 60px; animation-delay: 1.5s; }
 
-.card .tag {
+/* Tag */
+.tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 10px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
 }
-.card .tag .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-.card-1 .tag { color: #d4685a; } .card-1 .dot { background: #d4685a; }
-.card-2 .tag { color: #5870c8; } .card-2 .dot { background: #5870c8; }
-.card-3 .tag { color: #48a068; } .card-3 .dot { background: #48a068; }
-.card-4 .tag { color: #9b59b6; } .card-4 .dot { background: #9b59b6; }
-.card-5 .tag { color: #e8963e; } .card-5 .dot { background: #e8963e; }
-.card-6 .tag { color: #4a90d9; } .card-6 .dot { background: #4a90d9; }
+.card-pink .tag   { background: #ffe4e6; color: #e11d48; }
+.card-purple .tag { background: #f3e8ff; color: #9333ea; }
+.card-mint .tag   { background: #dcfce7; color: #16a34a; }
+.card-peach .tag  { background: #ffedd5; color: #ea580c; }
+.card-blue .tag   { background: #dbeafe; color: #2563eb; }
+.card-lav .tag    { background: #fce7f3; color: #db2777; }
 
+.tag .emoji { font-size: 13px; }
+
+/* Title */
 .card h2 {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   margin-bottom: 8px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
-.card-1 h2 { color: #d4685a; }
-.card-2 h2 { color: #5870c8; }
-.card-3 h2 { color: #48a068; }
-.card-4 h2 { color: #9b59b6; }
-.card-5 h2 { color: #e8963e; }
-.card-6 h2 { color: #4a90d9; }
+.card-pink h2   { color: #be123c; }
+.card-purple h2 { color: #7c3aed; }
+.card-mint h2   { color: #15803d; }
+.card-peach h2  { color: #c2410c; }
+.card-blue h2   { color: #1d4ed8; }
+.card-lav h2    { color: #be185d; }
 
+/* Body */
 .card p {
   font-size: 13.5px;
-  color: #6b5b6b;
-  line-height: 1.85;
+  line-height: 1.9;
   margin-bottom: 6px;
 }
+.card-pink p   { color: #9d5b6b; }
+.card-purple p { color: #7c6b8a; }
+.card-mint p   { color: #5b7a5b; }
+.card-peach p  { color: #8b6b5a; }
+.card-blue p   { color: #5b6b8a; }
+.card-lav p    { color: #9b5b7a; }
 
-.card .divider {
-  height: 1.5px;
-  margin: 10px 0;
+/* Divider */
+.divider {
+  height: 2px;
+  margin: 12px 0;
   border-radius: 1px;
+  opacity: 0.5;
 }
-.card-1 .divider { background: linear-gradient(90deg, #fdd4d4, transparent); }
-.card-2 .divider { background: linear-gradient(90deg, #d4dffd, transparent); }
-.card-3 .divider { background: linear-gradient(90deg, #d4fde0, transparent); }
-.card-4 .divider { background: linear-gradient(90deg, #f0d4fd, transparent); }
-.card-5 .divider { background: linear-gradient(90deg, #fde8c8, transparent); }
-.card-6 .divider { background: linear-gradient(90deg, #c8e6fd, transparent); }
+.card-pink .divider   { background: linear-gradient(90deg, #fda4af, transparent 80%); }
+.card-purple .divider { background: linear-gradient(90deg, #c4b5fd, transparent 80%); }
+.card-mint .divider   { background: linear-gradient(90deg, #86efac, transparent 80%); }
+.card-peach .divider  { background: linear-gradient(90deg, #fdba74, transparent 80%); }
+.card-blue .divider   { background: linear-gradient(90deg, #93c5fd, transparent 80%); }
+.card-lav .divider    { background: linear-gradient(90deg, #f9a8d4, transparent 80%); }
 
-.card .link-row {
-  font-size: 12px;
-  margin-top: 4px;
-}
-.card .link-row a {
-  color: #b0a0b0;
+/* Link */
+.link-row { font-size: 12px; }
+.link-row a {
+  color: #c9a0b0;
   text-decoration: none;
+  font-weight: 500;
   transition: color 0.2s;
 }
-.card .link-row a:hover { color: #5870c8; }
+.link-row a:hover { color: #e8526b; }
 
-.card .badge {
+/* Badge */
+.badge {
   display: inline-block;
   font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-top: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
-.card-1 .badge { background: #fde8e8; color: #d4685a; }
-.card-2 .badge { background: #e8ecfd; color: #5870c8; }
-.card-3 .badge { background: #e0f8e8; color: #48a068; }
-.card-4 .badge { background: #f0e4f8; color: #9b59b6; }
-.card-5 .badge { background: #fef0e0; color: #e8963e; }
-.card-6 .badge { background: #e4f0fb; color: #4a90d9; }
+.card-pink .badge   { background: #ffe4e6; color: #e11d48; }
+.card-purple .badge { background: #f3e8ff; color: #9333ea; }
+.card-mint .badge   { background: #dcfce7; color: #16a34a; }
+.card-peach .badge  { background: #ffedd5; color: #ea580c; }
+.card-blue .badge   { background: #dbeafe; color: #2563eb; }
+.card-lav .badge    { background: #fce7f3; color: #db2777; }
 
+/* ======== FOOTER ======== */
 .footer {
   text-align: center;
-  margin-top: 32px;
-  padding: 16px;
+  margin-top: 36px;
   position: relative;
   z-index: 1;
 }
-.footer .cta {
-  font-size: 13px;
-  color: #b0a0b0;
-  line-height: 1.8;
+.footer .cta-card {
+  display: inline-block;
+  background: linear-gradient(135deg, #fff0f5, #fce4ec);
+  border: 2px dashed #f9a8d4;
+  border-radius: 20px;
+  padding: 16px 28px;
+  box-shadow: 0 3px 15px rgba(249,168,212,0.15);
 }
-.footer .cta strong { color: #d4685a; }
+.footer .cta-card p {
+  font-size: 13px;
+  color: #be185d;
+  line-height: 1.8;
+  margin: 0;
+}
+.footer .cta-card strong {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .footer .brand {
   font-size: 11px;
-  color: #ccc;
-  margin-top: 10px;
+  color: #d8b4c8;
+  margin-top: 14px;
+}
+.footer .hearts {
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 4px;
+  opacity: 0.5;
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="icon">☕️</div>
+  <div class="banner"><span>✦ DAILY BRIEFING ✦</span></div>
+  <div class="mascot">🐣</div>
   <h1>星链AI · 今日速报</h1>
-  <div class="date">2026年7月16日 星期四</div>
-  <div class="dots">✦ ✦ ✦</div>
+  <div class="date">2026.07.16 周四</div>
 </div>
 
-<!-- Card 1: WAIC -->
-<div class="card card-1">
-  <div class="tag"><span class="dot"></span>明日开幕</div>
-  <h2>🏛️ WAIC 2026 明天上海启幕</h2>
-  <p>世界人工智能大会 7.17-20 在上海「三地四馆」同步举行，展览总面积首次突破 10 万平方米，超 300 款产品全球首发。习近平将出席开幕式。主题「智能伙伴 共创未来」，140+ 论坛，1400+ 嘉宾。</p>
-  <div class="divider"></div>
-  <div class="link-row"><a href="https://www.guancha.cn/WAIC2026/index.html" target="_blank">官方议程 →</a></div>
-  <div class="badge">7.17-20</div>
+<div class="cards">
+
+<!-- 1: WAIC -->
+<div class="card card-pink">
+  <div class="bubble b1"></div>
+  <div class="star s1">💫</div>
+  <div class="card-inner">
+    <div class="tag"><span class="emoji">🏛️</span> 明日开幕</div>
+    <h2>WAIC 2026 上海·明天见</h2>
+    <p>7.17-20「三地四馆」同步启幕，展览首破 10 万㎡，超 300 款全球首发。习近平将出席开幕式。主题「智能伙伴 共创未来」，140+ 场论坛，1400+ 位嘉宾。</p>
+    <div class="divider"></div>
+    <div class="link-row"><a href="https://www.guancha.cn/WAIC2026/index.html" target="_blank">📋 官方议程 →</a></div>
+    <div class="badge">📅 7.17-20 上海</div>
+  </div>
 </div>
 
-<!-- Card 2: 智能体关闭 -->
-<div class="card card-2">
-  <div class="tag"><span class="dot"></span>行业地震</div>
-  <h2>🚫 豆包 & 通义千问 同步关闭自建智能体</h2>
-  <p>字节豆包、阿里通义千问同步公告：平台内用户自建智能体功能将关闭，10 月 15 日后所有对话与人设数据清空。国家级监管新规落地前夜，大厂抢先合规。</p>
-  <div class="divider"></div>
-  <div class="link-row"><a href="https://www.baidu.com/s?wd=%E8%B1%86%E5%8C%85+%E9%80%9A%E4%B9%89%E5%8D%83%E9%97%AE+%E5%85%B3%E9%97%AD%E6%99%BA%E8%83%BD%E4%BD%93+2026" target="_blank">百度搜索更多 →</a></div>
-  <div class="badge">7.15</div>
+<!-- 2: 智能体关闭 -->
+<div class="card card-purple">
+  <div class="bubble b2"></div>
+  <div class="star s2">⚡</div>
+  <div class="card-inner">
+    <div class="tag"><span class="emoji">🚫</span> 行业地震</div>
+    <h2>豆包 & 通义千问 同步关停自建智能体</h2>
+    <p>字节豆包、阿里通义千问同步公告：用户自建智能体功能即将关闭，10 月 15 日后数据全部清空。新规落地前夜，大厂抢先合规的信号弹。</p>
+    <div class="divider"></div>
+    <div class="link-row"><a href="https://www.baidu.com/s?wd=%E8%B1%86%E5%8C%85+%E9%80%9A%E4%B9%89%E5%8D%83%E9%97%AE+%E5%85%B3%E9%97%AD%E6%99%BA%E8%83%BD%E4%BD%93+2026" target="_blank">🔍 百度搜索更多 →</a></div>
+    <div class="badge">⏰ 7.15 公告</div>
+  </div>
 </div>
 
-<!-- Card 3: 新规施行 -->
-<div class="card card-3">
-  <div class="tag"><span class="dot"></span>监管落地</div>
-  <h2>⚖️《AI 拟人化互动服务管理暂行办法》昨起施行</h2>
-  <p>国家网信办等五部门联合发布，7 月 15 日正式施行。首次对 AI 拟人化互动服务提出系统性监管要求，涵盖虚拟角色、AI 伴侣等场景，行业合规成本将大幅提升。</p>
-  <div class="divider"></div>
-  <div class="link-row"><a href="https://www.baidu.com/s?wd=AI%E6%8B%9F%E4%BA%BA%E5%8C%96%E4%BA%92%E5%8A%A8%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%9A%82%E8%A1%8C%E5%8A%9E%E6%B3%95+2026" target="_blank">百度搜索更多 →</a></div>
-  <div class="badge">7.15 起施行</div>
+<!-- 3: 新规 -->
+<div class="card card-mint">
+  <div class="bubble b3"></div>
+  <div class="card-inner">
+    <div class="tag"><span class="emoji">⚖️</span> 监管落地</div>
+    <h2>《AI拟人化互动暂行办法》昨起施行</h2>
+    <p>网信办等五部门联合发布，7.15 正式施行。首次系统性监管 AI 虚拟角色、AI 伴侣等拟人化互动场景，行业合规门槛大幅拉高。</p>
+    <div class="divider"></div>
+    <div class="link-row"><a href="https://www.baidu.com/s?wd=AI%E6%8B%9F%E4%BA%BA%E5%8C%96%E4%BA%92%E5%8A%A8%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%9A%82%E8%A1%8C%E5%8A%9E%E6%B3%95+2026" target="_blank">🔍 百度搜索更多 →</a></div>
+    <div class="badge">📜 7.15 起施行</div>
+  </div>
 </div>
 
-<!-- Card 4: Apple vs OpenAI -->
-<div class="card card-4">
-  <div class="tag"><span class="dot"></span>硅谷大战</div>
-  <h2>🍎 苹果起诉 OpenAI 窃取商业机密</h2>
-  <p>苹果 7 月 10 日在加州联邦法院起诉 OpenAI，指控其系统性挖角前苹果员工窃取未发布 AI 硬件机密。据称 OpenAI 正开发自有 AI 硬件设备，此案可能重塑科技公司间人才流动规则。</p>
-  <div class="divider"></div>
-  <div class="link-row"><a href="https://www.cnbc.com/2026/07/10/apple-openai-lawsuit-trade-secrets.html" target="_blank">CNBC 报道 →</a></div>
-  <div class="badge">7.10</div>
+<!-- 4: Apple vs OpenAI -->
+<div class="card card-peach">
+  <div class="bubble b1" style="background:rgba(254,215,170,0.25); width:40px;height:40px;"></div>
+  <div class="star s1">🔥</div>
+  <div class="card-inner">
+    <div class="tag"><span class="emoji">🍎</span> 硅谷大战</div>
+    <h2>苹果起诉 OpenAI 窃取商业机密</h2>
+    <p>7.10 加州联邦法院，苹果指控 OpenAI 系统性挖角前员工窃取未发布 AI 硬件机密。OpenAI 自有硬件设备浮出水面，人才争夺战白热化。</p>
+    <div class="divider"></div>
+    <div class="link-row"><a href="https://www.cnbc.com/2026/07/10/apple-openai-lawsuit-trade-secrets.html" target="_blank">📰 CNBC 报道 →</a></div>
+    <div class="badge">⚡ 7.10 起诉</div>
+  </div>
 </div>
 
-<!-- Card 5: GPT-5.6 -->
-<div class="card card-5">
-  <div class="tag"><span class="dot"></span>模型上新</div>
-  <h2>🤖 OpenAI 发布 GPT-5.6 三款模型 + ChatGPT Work</h2>
-  <p>7 月 10 日发布 GPT-5.6 系列：旗舰 Sol、均衡 Terra、性价比 Luna。同步推出 ChatGPT Work —— 可跨应用执行任务的 AI 智能体，能持续跟进项目数小时。</p>
-  <div class="divider"></div>
-  <div class="link-row"><a href="https://www.baidu.com/s?wd=OpenAI+GPT-5.6+ChatGPT+Work+2026%E5%B9%B47%E6%9C%88" target="_blank">百度搜索更多 →</a></div>
-  <div class="badge">7.10 全量上线</div>
+<!-- 5: GPT-5.6 -->
+<div class="card card-blue">
+  <div class="bubble b2" style="background:rgba(191,219,254,0.3); width:36px;height:36px;"></div>
+  <div class="card-inner">
+    <div class="tag"><span class="emoji">🤖</span> 模型上新</div>
+    <h2>OpenAI 发布 GPT-5.6 + ChatGPT Work</h2>
+    <p>三款模型齐发：旗舰 Sol · 均衡 Terra · 性价比 Luna。ChatGPT Work 同步上线，跨应用执行任务的 AI 智能体，可持续跟进项目数小时。</p>
+    <div class="divider"></div>
+    <div class="link-row"><a href="https://www.baidu.com/s?wd=OpenAI+GPT-5.6+ChatGPT+Work+2026" target="_blank">🔍 百度搜索更多 →</a></div>
+    <div class="badge">🚀 7.10 全量上线</div>
+  </div>
 </div>
 
-<!-- Card 6: Agent market -->
-<div class="card card-6">
-  <div class="tag"><span class="dot"></span>产业数据</div>
-  <h2>💰 AI Agent 市场半年爆增 78%，规模达 182 亿</h2>
-  <p>2026 上半年中国 AI Agent 市场规模达 182.34 亿元，同比增长 78.03%。APA（智能体流程自动化）替代传统 RPA 成为新趋势。Gartner 定调 2026 为「Agent 商用元年」。</p>
-  <div class="divider"></div>
-  <div class="link-row"><a href="https://www.baidu.com/s?wd=AI+Agent+%E5%B8%82%E5%9C%BA%E8%A7%84%E6%A8%A1+2026+182%E4%BA%BF" target="_blank">百度搜索更多 →</a></div>
-  <div class="badge">2026 H1</div>
+<!-- 6: Agent market -->
+<div class="card card-lav">
+  <div class="bubble b3" style="background:rgba(251,207,232,0.25); width:34px;height:34px;"></div>
+  <div class="star s2">📊</div>
+  <div class="card-inner">
+    <div class="tag"><span class="emoji">💰</span> 产业数据</div>
+    <h2>AI Agent 半年爆增 78%，规模 182 亿</h2>
+    <p>2026 H1 中国 AI Agent 市场规模 182.34 亿元，同比 +78.03%。APA 替代 RPA 成趋势。Gartner 定调：「Agent 商用元年」已至。</p>
+    <div class="divider"></div>
+    <div class="link-row"><a href="https://www.baidu.com/s?wd=AI+Agent+%E5%B8%82%E5%9C%BA%E8%A7%84%E6%A8%A1+2026+182%E4%BA%BF" target="_blank">🔍 百度搜索更多 →</a></div>
+    <div class="badge">📈 2026 H1</div>
+  </div>
+</div>
+
 </div>
 
 <div class="footer">
-  <div class="cta">
-    想让 AI 去你公司看看哪里能用起来？<br>
-    厦门线下诊断预约，私信「<strong>诊断</strong>」📩
+  <div class="cta-card">
+    <p>想让 AI 去你公司看看哪里能用起来？<br>厦门线下诊断，私信「<strong>诊断</strong>」📩</p>
   </div>
-  <div class="brand">星链AI · 每日速报 · Powered by Hermes</div>
+  <div class="brand">🐣 星链AI · 每日速报 · Hermes 生成</div>
+  <div class="hearts">💗 💗 💗</div>
 </div>
 
 </body>

@@ -283,6 +283,43 @@ body::before {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(2deg); }
 }
+
+/* ===== CATEGORY TABS ===== */
+.tabs-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto 18px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tab-btn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(176,112,112,0.15);
+  background: #fffaf7;
+  color: #8a7070;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.tab-btn:hover {
+  border-color: rgba(176,112,112,0.3);
+  color: #b07070;
+}
+.tab-btn.active {
+  background: #5c3d3d;
+  color: #f5ede8;
+  border-color: #5c3d3d;
+}
+.card.hidden-card {
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -296,10 +333,19 @@ body::before {
   <div class="date">2026.07.16 周四</div>
 </div>
 
+<div class="tabs-wrapper">
+  <button class="tab-btn active" onclick="filterCards('all')">全部</button>
+  <button class="tab-btn" onclick="filterCards('model')">🤖 大模型/产品</button>
+  <button class="tab-btn" onclick="filterCards('policy')">📜 政策监管</button>
+  <button class="tab-btn" onclick="filterCards('event')">🏛️ 行业活动</button>
+  <button class="tab-btn" onclick="filterCards('biz')">⚖️ 企业动态</button>
+  <button class="tab-btn" onclick="filterCards('data')">📈 产业数据</button>
+</div>
+
 <div class="cards">
 
 <!-- 1: WAIC -->
-<div class="card card-pink">
+<div class="card card-pink" data-category="event">
   <div class="bubble b1"></div>
   <div class="bubble b4"></div>
   <div class="star s1">💫</div>
@@ -315,7 +361,7 @@ body::before {
 </div>
 
 <!-- 2: 智能体关闭 -->
-<div class="card card-purple">
+<div class="card card-purple" data-category="model">
   <div class="bubble b2"></div>
   <div class="bubble b3"></div>
   <div class="star s2">⚡</div>
@@ -331,7 +377,7 @@ body::before {
 </div>
 
 <!-- 3: 新规 -->
-<div class="card card-mint">
+<div class="card card-mint" data-category="policy">
   <div class="bubble b1"></div>
   <div class="bubble b3"></div>
   <div class="bubble b4"></div>
@@ -347,7 +393,7 @@ body::before {
 </div>
 
 <!-- 4: Apple vs OpenAI -->
-<div class="card card-peach">
+<div class="card card-peach" data-category="biz">
   <div class="bubble b1"></div>
   <div class="bubble b2"></div>
   <div class="star s1">🔥</div>
@@ -363,7 +409,7 @@ body::before {
 </div>
 
 <!-- 5: GPT-5.6 -->
-<div class="card card-blue">
+<div class="card card-blue" data-category="model">
   <div class="bubble b1"></div>
   <div class="bubble b2"></div>
   <div class="bubble b4"></div>
@@ -379,7 +425,7 @@ body::before {
 </div>
 
 <!-- 6: Agent market -->
-<div class="card card-lav">
+<div class="card card-lav" data-category="data">
   <div class="bubble b1"></div>
   <div class="bubble b3"></div>
   <div class="star s1">🌸</div>
@@ -404,5 +450,19 @@ body::before {
   <div class="hearts">💗 💗 💗</div>
 </div>
 
+
+<script>
+function filterCards(cat) {
+  document.querySelectorAll('.card').forEach(c => {
+    if (cat === 'all' || c.getAttribute('data-category') === cat) {
+      c.classList.remove('hidden-card');
+    } else {
+      c.classList.add('hidden-card');
+    }
+  });
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
 </body>
 </html>

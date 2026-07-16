@@ -57,7 +57,7 @@ body::before {
   background: radial-gradient(circle, rgba(196,122,122,0.3) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  animation: headerGlow 6s ease-in-out infinite;
+  animation: orbPulse 4s ease-in-out infinite;
 }
 .header::after {
   content: '';
@@ -67,7 +67,7 @@ body::before {
   background: radial-gradient(circle, rgba(160,128,144,0.25) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  animation: headerGlow 8s ease-in-out infinite reverse;
+  animation: orbPulse 5s ease-in-out infinite 1s;
 }
 
 /* Sticker decorations inside header */
@@ -81,7 +81,7 @@ body::before {
   position: absolute;
   font-size: 18px;
   opacity: 0.3;
-  animation: floatSlow 5s ease-in-out infinite;
+  animation: stickerSpin 8s linear infinite;
 }
 .hs1 { top: 12px; left: 15%; font-size: 22px; animation-delay: 0s; }
 .hs2 { top: 18px; right: 12%; font-size: 16px; animation-delay: 1s; }
@@ -99,14 +99,14 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
-.td1 { top: 15%; left: 25%; animation: twinkle 4s ease-in-out infinite; }
-.td2 { top: 25%; left: 45%; animation: twinkle 5s ease-in-out infinite 1s; }
-.td3 { top: 35%; right: 30%; animation: twinkle 3.5s ease-in-out infinite 0.5s; }
-.td4 { top: 55%; left: 35%; animation: twinkle 4.5s ease-in-out infinite 2s; }
-.td5 { top: 65%; right: 25%; animation: twinkle 5.5s ease-in-out infinite 1.5s; }
-.td6 { top: 75%; left: 55%; animation: twinkle 3s ease-in-out infinite 3s; }
-.td7 { top: 20%; left: 60%; animation: twinkle 4s ease-in-out infinite 0.8s; }
-.td8 { top: 50%; right: 40%; animation: twinkle 6s ease-in-out infinite 2.5s; }
+.td1 { top: 15%; left: 25%; animation: dotBounce 3s ease-in-out infinite 0.3s; }
+.td2 { top: 25%; left: 45%; animation: dotBounce 4s ease-in-out infinite 0.6s; }
+.td3 { top: 35%; right: 30%; animation: dotBounce 5s ease-in-out infinite 0.8999999999999999s; }
+.td4 { top: 55%; left: 35%; animation: dotBounce 2s ease-in-out infinite 1.2s; }
+.td5 { top: 65%; right: 25%; animation: dotBounce 3s ease-in-out infinite 1.5s; }
+.td6 { top: 75%; left: 55%; animation: dotBounce 4s ease-in-out infinite 1.7999999999999998s; }
+.td7 { top: 20%; left: 60%; animation: dotBounce 5s ease-in-out infinite 2.1s; }
+.td8 { top: 50%; right: 40%; animation: dotBounce 2s ease-in-out infinite 2.4s; }
 
 @keyframes headerGlow {
   0%, 100% { opacity: 0.5; transform: scale(1); }
@@ -402,6 +402,77 @@ body::before {
 .card.hidden-card {
   display: none;
 }
+
+/* ===== DYNAMIC HEADER EFFECTS ===== */
+
+/* Scanning line */
+.header-scan {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.06) 30%,
+    rgba(255,255,255,0.1) 50%, 
+    rgba(255,255,255,0.06) 70%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: scanLine 4s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+  0% { left: -60%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
+}
+
+/* Pulsing grid */
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Rotating stickers */
+@keyframes stickerSpin {
+  0% { transform: rotate(0deg) translateY(0); opacity: 0.3; }
+  25% { transform: rotate(90deg) translateY(-5px); opacity: 0.5; }
+  50% { transform: rotate(180deg) translateY(0); opacity: 0.3; }
+  75% { transform: rotate(270deg) translateY(5px); opacity: 0.5; }
+  100% { transform: rotate(360deg) translateY(0); opacity: 0.3; }
+}
+
+/* Bouncing tech dots */
+@keyframes dotBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.15; }
+  30% { transform: translateY(-8px); opacity: 0.5; }
+  60% { transform: translateY(4px); opacity: 0.25; }
+}
+
+/* Shimmer effect on title */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Faster pulse for orbs */
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  25% { transform: scale(1.2); opacity: 0.7; }
+  50% { transform: scale(0.9); opacity: 0.3; }
+  75% { transform: scale(1.15); opacity: 0.6; }
+}
+
+/* Horizontal drift */
+@keyframes driftX {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(15px); }
+}
+@keyframes driftY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
 </style>
 </head>
 <body>
@@ -413,6 +484,7 @@ body::before {
   <div class="mascot">☕</div>
   <h1>星链AI · 今日速报</h1>
   <div class="date">2026.07.16 周四</div>
+  <div class="header-scan"></div>
   <div class="header-stickers">
     <span class="sticker hs1">✦</span>
     <span class="sticker hs2">◇</span>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>公众号图文生成器 · 星链AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;padding:16px;max-width:800px;margin:0 auto}
+.header{text-align:center;margin-bottom:20px}
+.header h1{font-size:22px;font-weight:900;background:linear-gradient(135deg,#07c160,#1aad19);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.panel{background:#fff;border-radius:14px;padding:24px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.panel h3{font-size:14px;font-weight:700;margin-bottom:12px;color:#333}
+.row{display:flex;gap:10px;margin-bottom:10px;align-items:center;flex-wrap:wrap}
+.row label{font-size:13px;color:#666;white-space:nowrap;min-width:55px}
+.row input,.row select,.row textarea{flex:1;min-width:180px;padding:10px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:inherit;outline:none}
+.row input:focus,.row textarea:focus{border-color:#07c160}
+.row textarea{min-height:80px}
+.btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-primary{background:#07c160;color:#fff}.btn-primary:hover{background:#06ad56}
+.btn-accent{background:#ff512f;color:#fff}.btn-accent:hover{background:#e04428}
+.btn-outline{background:#fff;color:#07c160;border:1px solid #07c160}.btn-outline:hover{background:#f0fdf5}
+.btn-copy{background:#333;color:#fff}.btn-copy:hover{background:#555}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.templates{display:flex;gap:6px;flex-wrap:wrap}
+.tpl-tag{padding:5px 12px;border-radius:16px;font-size:12px;cursor:pointer;border:1px solid #e0e0e0;background:#fff;transition:all .2s}
+.tpl-tag:hover,.tpl-tag.active{border-color:#07c160;background:#f0fdf5;color:#07c160}
+.preview{background:#fff;min-height:200px;padding:36px 28px;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.05);line-height:2;font-size:15px;color:#333;margin-top:14px}
+.preview h2{font-size:20px;font-weight:800;margin-bottom:16px;text-align:center}
+.preview h3{font-size:16px;font-weight:700;margin:24px 0 10px;color:#07c160}
+.preview p{margin-bottom:12px;text-indent:2em}
+.preview img{max-width:100%;border-radius:8px;margin:12px 0}
+.preview .img-placeholder{background:#f0fdf5;border:2px dashed #07c160;border-radius:8px;padding:30px;text-align:center;color:#07c160;font-size:13px;margin:12px 0}
+.preview .highlight-box{background:#f0fdf5;border-left:4px solid #07c160;padding:14px 18px;margin:16px 0;border-radius:0 8px 8px 0;text-indent:0}
+.preview .tip{font-size:12px;color:#999;text-indent:0}
+.preview .wechat-intro{color:#07c160;font-size:13px;text-indent:0;text-align:center}
+.hidden{display:none}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;z-index:999;opacity:0;transition:opacity .3s}
+.toast.show{opacity:1}
+.status{font-size:12px;color:#999;margin-top:8px}
+.settings-toggle{font-size:12px;color:#07c160;cursor:pointer;text-decoration:underline;margin-left:8px}
+</style>
+</head>
+<body>
+
+<div class="header"><h1>公众号图文生成器</h1></div>
+
+<div class="panel">
+<h3>设置 <span class="settings-toggle" onclick="document.getElementById('apiKeyInput').type=document.getElementById('apiKeyInput').type==='password'?'text':'password'">显示/隐藏</span></h3>
+<div class="row"><label>API Key</label><input id="apiKeyInput" type="password" placeholder="Agnes API Key（自动保存）" onchange="saveKey()"></div>
+<div class="row"><label>封面风格</label><select id="coverStyle"><option>现代简约</option><option>科技渐变</option><option>清新自然</option><option>活力撞色</option></select></div>
+</div>
+
+<div class="panel">
+<h3>1 输入</h3>
+<div class="row"><label>标题</label><input id="titleInput" placeholder="文章标题..."></div>
+<div class="row"><label>关键词</label><input id="keywordsInput" placeholder="关键词，逗号分隔"></div>
+<div class="row"><label>风格</label><select id="styleSelect"><option>干货教程</option><option>故事叙述</option><option>行业资讯</option><option>观点评论</option></select></div>
+<div class="row"><label>大纲</label><textarea id="outlineInput" placeholder="文章大纲，每行一个要点（留空自动生成）"></textarea></div>
+<div class="btns">
+  <button class="btn btn-primary" onclick="generateArticle()">生成文章</button>
+  <button class="btn btn-accent" onclick="generateAllImages()" id="genImgBtn">生成配图</button>
+  <button class="btn btn-outline" onclick="clearAll()">清空</button>
+</div>
+<div class="status" id="genStatus"></div>
+</div>
+
+<div class="panel">
+<h3>2 模板片段</h3>
+<div class="templates">
+  <span class="tpl-tag" onclick="insertTpl('intro')">引导关注</span>
+  <span class="tpl-tag" onclick="insertTpl('cta')">行动号召</span>
+  <span class="tpl-tag" onclick="insertTpl('case')">案例框</span>
+  <span class="tpl-tag" onclick="insertTpl('tip')">小贴士</span>
+  <span class="tpl-tag" onclick="insertTpl('divider')">分隔线</span>
+  <span class="tpl-tag" onclick="insertTpl('end')">文末引导</span>
+</div>
+</div>
+
+<div class="panel">
+<h3>3 预览</h3>
+<div id="previewArea" class="preview">
+  <p style="color:#999;text-align:center;text-indent:0;margin-top:60px">输入标题和关键词，点击「生成文章」</p>
+</div>
+<div id="editArea" class="hidden" style="margin-top:14px">
+  <textarea id="editText" style="width:100%;min-height:300px;padding:12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:monospace;line-height:1.8"></textarea>
+  <div class="btns"><button class="btn btn-primary" onclick="applyEdit()">预览修改</button><button class="btn btn-outline" onclick="toggleEdit()">取消</button></div>
+</div>
+<div class="btns" id="actionBtns">
+  <button class="btn btn-copy" onclick="copyArticle()">复制到剪贴板</button>
+  <button class="btn btn-outline" onclick="toggleEdit()">手动编辑HTML</button>
+</div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const AGNES_URL = 'https://apihub.agnes-ai.com/v1/images/generations';
+
+const tpls = {
+  intro: '<p class="wechat-intro">点击上方蓝字关注我们，不错过每一篇AI干货</p>',
+  cta: '<div class="highlight-box">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</div>',
+  case: '<div class="highlight-box"><b>案例：</b>此处插入具体案例</div>',
+  tip: '<p class="tip">小贴士：此处插入实用提示</p>',
+  divider: '<p style="text-align:center;text-indent:0;color:#ccc">—— · ——</p>',
+  end: '<p style="text-align:center;text-indent:0;margin-top:24px;color:#999;font-size:13px">关注星链AI，让AI真正为你工作<br>厦门预约诊断，私信回复「诊断」</p>'
+};
+
+let currentArticle = '';
+let currentTitle = '';
+let currentKeywords = '';
+let imagePrompts = [];
+
+// Load saved API key
+try { document.getElementById('apiKeyInput').value = localStorage.getItem('wx_apikey') || ''; } catch(e){}
+function saveKey() { try { localStorage.setItem('wx_apikey', document.getElementById('apiKeyInput').value); } catch(e){} }
+
+function insertTpl(key) {
+  currentArticle += tpls[key];
+  refreshPreview();
+}
+
+function generateArticle() {
+  const title = document.getElementById('titleInput').value.trim();
+  const keywords = document.getElementById('keywordsInput').value.trim();
+  const style = document.getElementById('styleSelect').value;
+  const outline = document.getElementById('outlineInput').value.trim();
+  
+  if (!title) { showToast('请先输入标题'); return; }
+  currentTitle = title;
+  currentKeywords = keywords;
+  
+  let article = '';
+  article += tpls.intro + '\n';
+  
+  // Cover image placeholder
+  const coverPrompt = `WeChat article cover image for "${title}", ${document.getElementById('coverStyle').value} style, professional, clean layout, 900x383 ratio, Chinese tech blog aesthetic`;
+  imagePrompts = [{id:'cover', label:'封面图', prompt: coverPrompt, html: ''}];
+  article += '<div class="img-placeholder" id="img-cover">封面图（点击「生成配图」自动生成）</div>\n';
+  article += `<h2>${title}</h2>\n`;
+  
+  const points = outline ? outline.split('\n').filter(l=>l.trim()) : ['要点一：核心概念介绍','要点二：实际操作方法','要点三：常见误区与避坑','要点四：总结与行动建议'];
+  
+  if (style === '干货教程') {
+    article += `<p>今天跟大家聊聊${title.split('：')[0] || title.slice(0,10)}。话不多说，直接上干货。</p>\n`;
+    for (let i=0; i<points.length; i++) {
+      const imgId = `img-section-${i}`;
+      const imgPrompt = `WeChat article inline illustration for section "${points[i]}", clean modern style, 800x600, Chinese tech blog, minimal design with accent colors`;
+      imagePrompts.push({id: imgId, label: `配图${i+1}: ${points[i].slice(0,20)}`, prompt: imgPrompt, html: ''});
+      
+      article += `<h3>${i+1}. ${points[i]}</h3>\n`;
+      article += `<div class="img-placeholder" id="${imgId}">配图：${points[i]}</div>\n`;
+      article += `<p>此部分展开${points[i]}的详细内容。结合${keywords || '实际场景'}，用具体案例说明，让读者一看就懂。</p>\n`;
+      if (i === 1) article += tpls.case + '\n';
+      if (i === 2) article += tpls.tip + '\n';
+    }
+  } else if (style === '故事叙述') {
+    article += `<p>先讲一个故事。</p>\n`;
+    article += `<p>前段时间，一个做${keywords?.split(',')[0] || '实体生意'}的朋友找到我...</p>\n`;
+    for (let i=0; i<points.length; i++) {
+      const imgId = `img-section-${i}`;
+      imagePrompts.push({id: imgId, label: `配图${i+1}: ${points[i].slice(0,20)}`, prompt: `Storytelling illustration for "${points[i]}", warm natural style, 800x600`, html: ''});
+      article += `<h3>${points[i]}</h3>\n`;
+      article += `<div class="img-placeholder" id="${imgId}">配图：${points[i]}</div>\n`;
+      article += `<p>关键在于：${keywords || '如何用AI来解决这个问题'}</p>\n`;
+    }
+  } else if (style === '行业资讯') {
+    article += `<p>${new Date().toLocaleDateString('zh-CN')}，最新动态。</p>\n`;
+    for (let i=0; i<points.length; i++) {
+      const imgId = `img-section-${i}`;
+      imagePrompts.push({id: imgId, label: `配图${i+1}: ${points[i].slice(0,20)}`, prompt: `Tech news illustration for "${points[i]}", modern data visualization style, 800x600`, html: ''});
+      article += `<h3>${points[i]}</h3>\n`;
+      article += `<div class="img-placeholder" id="${imgId}">配图：${points[i]}</div>\n`;
+      article += `<p>最新消息显示，${keywords || '行业'}正在发生重要变化。</p>\n`;
+    }
+  } else {
+    article += `<p>关于${title}，我有一个不太一样的看法。</p>\n`;
+    for (let i=0; i<points.length; i++) {
+      const imgId = `img-section-${i}`;
+      imagePrompts.push({id: imgId, label: `配图${i+1}: ${points[i].slice(0,20)}`, prompt: `Opinion piece illustration for "${points[i]}", bold editorial style, 800x600`, html: ''});
+      article += `<h3>${points[i]}</h3>\n`;
+      article += `<div class="img-placeholder" id="${imgId}">配图：${points[i]}</div>\n`;
+      article += `<p>很多人以为是这样，但实际上${keywords || '事实并非如此'}。</p>\n`;
+    }
+  }
+  
+  article += tpls.divider + '\n';
+  article += tpls.end + '\n';
+  
+  currentArticle = article;
+  refreshPreview();
+  showToast(`文章已生成，${imagePrompts.length}张配图待生成`);
+}
+
+async function generateAllImages() {
+  const apiKey = document.getElementById('apiKeyInput').value.trim();
+  if (!apiKey) { showToast('请先输入API Key'); return; }
+  if (!currentArticle) { showToast('请先生成文章'); return; }
+  
+  const btn = document.getElementById('genImgBtn');
+  btn.disabled = true;
+  btn.textContent = '生成中...';
+  document.getElementById('genStatus').textContent = `0/${imagePrompts.length}`;
+  
+  let generated = 0;
+  for (let i = 0; i < imagePrompts.length; i++) {
+    const ip = imagePrompts[i];
+    document.getElementById('genStatus').textContent = `生成中... ${i+1}/${imagePrompts.length} ${ip.label}`;
+    
+    try {
+      const resp = await fetch(AGNES_URL, {
+        method: 'POST',
+        headers: {'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json'},
+        body: JSON.stringify({model: 'agnes-image-2.1-flash', prompt: ip.prompt, n: 1, size: i === 0 ? '1024x576' : '1024x1024'})
+      });
+      
+      if (resp.ok) {
+        const data = await resp.json();
+        const imgUrl = data.data[0].url;
+        // Download and convert to data URL for embedding
+        const imgResp = await fetch(imgUrl);
+        const blob = await imgResp.blob();
+        const reader = new FileReader();
+        const dataUrl = await new Promise(resolve => {
+          reader.onload = () => resolve(reader.result);
+          reader.readAsDataURL(blob);
+        });
+        ip.html = `<img src="${dataUrl}" alt="${ip.label}">`;
+        generated++;
+        
+        // Update placeholder in article
+        currentArticle = currentArticle.replace(
+          new RegExp(`<div class="img-placeholder" id="${ip.id}">.*?</div>`, 's'),
+          ip.html
+        );
+        refreshPreview();
+      } else {
+        const err = await resp.text();
+        console.error(`Image gen failed for ${ip.label}:`, err);
+        ip.html = `<div class="img-placeholder">生成失败: ${err.slice(0,80)}</div>`;
+      }
+    } catch(e) {
+      console.error(`Network error for ${ip.label}:`, e);
+      ip.html = `<div class="img-placeholder">网络错误: ${e.message}</div>`;
+    }
+  }
+  
+  btn.disabled = false;
+  btn.textContent = '生成配图';
+  document.getElementById('genStatus').textContent = `完成！${generated}/${imagePrompts.length} 张生成成功`;
+  if (generated === imagePrompts.length) showToast('全部配图生成完成');
+  else showToast(`${generated}张成功，${imagePrompts.length-generated}张失败`);
+}
+
+function refreshPreview() {
+  document.getElementById('previewArea').innerHTML = currentArticle || '<p style="color:#999;text-align:center;text-indent:0;margin-top:60px">输入标题和关键词，点击「生成文章」</p>';
+}
+
+function toggleEdit() {
+  const preview = document.getElementById('previewArea');
+  const edit = document.getElementById('editArea');
+  const btns = document.getElementById('actionBtns');
+  if (edit.classList.contains('hidden')) {
+    document.getElementById('editText').value = currentArticle;
+    preview.classList.add('hidden');
+    edit.classList.remove('hidden');
+    btns.classList.add('hidden');
+  } else {
+    edit.classList.add('hidden');
+    preview.classList.remove('hidden');
+    btns.classList.remove('hidden');
+  }
+}
+
+function applyEdit() {
+  currentArticle = document.getElementById('editText').value;
+  refreshPreview();
+  toggleEdit();
+  showToast('已更新');
+}
+
+function copyArticle() {
+  const div = document.createElement('div');
+  div.innerHTML = currentArticle;
+  div.style.position = 'fixed'; div.style.left = '-9999px';
+  document.body.appendChild(div);
+  const range = document.createRange(); range.selectNodeContents(div);
+  const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  document.execCommand('copy');
+  document.body.removeChild(div);
+  showToast('已复制（含图片），粘贴到公众号后台即可');
+}
+
+function clearAll() {
+  document.getElementById('titleInput').value = '';
+  document.getElementById('keywordsInput').value = '';
+  document.getElementById('outlineInput').value = '';
+  currentArticle = '';
+  imagePrompts = [];
+  document.getElementById('genStatus').textContent = '';
+  refreshPreview();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2500);
+}
+
+// Init
+document.getElementById('titleInput').focus();
+</script>
+</body>
+</html>

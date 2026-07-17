@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI案例素材库 · 星链AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f8f9fc;color:#1a1a2e;padding:20px 16px 40px}
+.header{text-align:center;margin-bottom:24px}
+.header h1{font-size:24px;font-weight:900;background:linear-gradient(135deg,#ff512f,#8e2de2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.header p{font-size:13px;color:#999}
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;position:sticky;top:0;z-index:10;padding:12px 0;background:#f8f9fc}
+.tag{border:none;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;background:#fff;color:#666;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.tag.active,.tag:hover{background:linear-gradient(135deg,#ff512f,#8e2de2);color:#fff;box-shadow:0 2px 8px rgba(255,81,47,.3)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;max-width:1000px;margin:0 auto}
+.card{background:#fff;border-radius:16px;padding:20px 20px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .2s;display:flex;flex-direction:column;gap:8px}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+.card.hidden{display:none}
+.industry-tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;background:linear-gradient(135deg,#ff512f,#ff8050);color:#fff;width:fit-content}
+.card-scenario{font-size:17px;font-weight:800;color:#1a1a2e;line-height:1.3}
+.card-row{display:flex;gap:8px;font-size:13px;line-height:1.6}
+.card-row .label{color:#999;flex-shrink:0;font-size:12px}
+.card-row span:last-child{color:#555}
+.card-source{font-size:11px;color:#bbb;border-top:1px solid #f0f0f0;padding-top:8px;margin-top:4px}
+.footer{text-align:center;margin-top:32px;font-size:12px;color:#bbb}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>AI 案例素材库</h1>
+  <p>25个案例 · 9个行业 · 持续更新</p>
+</div>
+<div class="filters">
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+ 
+a
+c
+t
+i
+v
+e
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+全
+部
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+全
+部
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+制
+造
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+制
+造
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+办
+公
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+办
+公
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+医
+疗
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+医
+疗
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+地
+产
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+地
+产
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+教
+育
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+教
+育
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+法
+律
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+法
+律
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+营
+销
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+营
+销
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+零
+售
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+零
+售
+<
+/
+b
+u
+t
+t
+o
+n
+>
+<
+b
+u
+t
+t
+o
+n
+ 
+c
+l
+a
+s
+s
+=
+"
+t
+a
+g
+"
+ 
+o
+n
+c
+l
+i
+c
+k
+=
+"
+f
+i
+l
+t
+e
+r
+(
+'
+餐
+饮
+'
+,
+ 
+t
+h
+i
+s
+)
+"
+>
+餐
+饮
+<
+/
+b
+u
+t
+t
+o
+n
+>
+</div>
+<div class="cards">
+<div class="card" data-industry="餐饮">
+  <span class="industry-tag">餐饮</span>
+  <div class="card-scenario">智能点餐</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT / 豆包 + 小程序</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>小餐饮店没人写菜单文案、没人回顾客评价</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI生成菜品描述+自动回复评价，1人顶3人</span></div>
+  <div class="card-source">行业通用实践</div>
+</div><div class="card" data-industry="餐饮">
+  <span class="industry-tag">餐饮</span>
+  <div class="card-scenario">后厨排班</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>Excel + ChatGPT</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>排班靠经验、员工不满、人力浪费</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI根据客流量数据自动排班，省15%人工</span></div>
+  <div class="card-source">连锁餐饮数字化报告</div>
+</div><div class="card" data-industry="餐饮">
+  <span class="industry-tag">餐饮</span>
+  <div class="card-scenario">外卖运营</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>AI写标题+抠图</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>外卖平台标题没吸引力、图片难看</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI批量生成爆款标题+菜品图，单量提升20-30%</span></div>
+  <div class="card-source">美团商家案例</div>
+</div><div class="card" data-industry="零售">
+  <span class="industry-tag">零售</span>
+  <div class="card-scenario">商品描述</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT / 文心一言</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>几百个SKU，写描述写到吐</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI批量生成差异化描述，效率提升10倍</span></div>
+  <div class="card-source">电商SaaS行业报告</div>
+</div><div class="card" data-industry="零售">
+  <span class="industry-tag">零售</span>
+  <div class="card-scenario">客服机器人</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>扣子Coze / 微信机器人</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>早晚都要回复客户，半夜没人</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI客服7×24自动回复，常见问题拦截率80%+</span></div>
+  <div class="card-source">企业微信案例</div>
+</div><div class="card" data-industry="零售">
+  <span class="industry-tag">零售</span>
+  <div class="card-scenario">库存预测</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT + Excel</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>进货靠感觉，要么断货要么积压</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI分析历史销售数据预测补货，库存周转提升30%</span></div>
+  <div class="card-source">零售数字化转型白皮书</div>
+</div><div class="card" data-industry="办公">
+  <span class="industry-tag">办公</span>
+  <div class="card-scenario">会议纪要</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>飞书妙记 / 通义听悟</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>开会2小时，整理纪要用1小时</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI实时转录+自动生成纪要+待办，10分钟搞定</span></div>
+  <div class="card-source">飞书官方案例</div>
+</div><div class="card" data-industry="办公">
+  <span class="industry-tag">办公</span>
+  <div class="card-scenario">PPT制作</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>Gamma / 美图AI PPT</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>做PPT太慢，领导急着要</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>输入大纲→AI生成完整PPT，30分钟变3分钟</span></div>
+  <div class="card-source">办公效率工具评测</div>
+</div><div class="card" data-industry="办公">
+  <span class="industry-tag">办公</span>
+  <div class="card-scenario">合同审查</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT + 法务提示词</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>中小企业没专职法务，合同靠自己看</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI扫描合同风险点，减少80%低级漏洞</span></div>
+  <div class="card-source">法律科技行业报告</div>
+</div><div class="card" data-industry="办公">
+  <span class="industry-tag">办公</span>
+  <div class="card-scenario">数据报表</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT + Excel/飞书表格</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>老板要看数据，手动拉表半天</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>自然语言提问→AI自动生成图表和分析</span></div>
+  <div class="card-source">微软Copilot案例</div>
+</div><div class="card" data-industry="营销">
+  <span class="industry-tag">营销</span>
+  <div class="card-scenario">小红书文案</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT / 豆包</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>每天要发但不知道写什么</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI生成选题+文案初稿，运营效率提升5倍</span></div>
+  <div class="card-source">新媒体运营通用实践</div>
+</div><div class="card" data-industry="营销">
+  <span class="industry-tag">营销</span>
+  <div class="card-scenario">短视频脚本</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT / 剪映AI</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>拍视频不知道说什么，对着镜头卡壳</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI按产品自动生成口播脚本+分镜建议</span></div>
+  <div class="card-source">抖音创作者工具</div>
+</div><div class="card" data-industry="营销">
+  <span class="industry-tag">营销</span>
+  <div class="card-scenario">海报设计</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>Canva AI / 美图AI</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>没有设计师，活动海报丑</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>输入文字→AI生成多种风格海报，零基础可用</span></div>
+  <div class="card-source">Canva官方案例</div>
+</div><div class="card" data-industry="制造">
+  <span class="industry-tag">制造</span>
+  <div class="card-scenario">质检</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>百度AI / 华为云AI</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>人工质检慢、漏检多、加班严重</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI视觉质检准确率99.5%，速度提升10倍</span></div>
+  <div class="card-source">工业互联网案例集</div>
+</div><div class="card" data-industry="制造">
+  <span class="industry-tag">制造</span>
+  <div class="card-scenario">设备维护</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>IoT传感器 + AI预测</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>设备突然坏了，停产损失大</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI预测故障提前维护，停机减少60%</span></div>
+  <div class="card-source">智能制造白皮书</div>
+</div><div class="card" data-industry="制造">
+  <span class="industry-tag">制造</span>
+  <div class="card-scenario">安全生产</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>AI视频监控</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>工人不戴安全帽、违规操作管不住</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI实时识别+自动告警，事故率大幅下降</span></div>
+  <div class="card-source">智慧工厂案例</div>
+</div><div class="card" data-industry="教育">
+  <span class="industry-tag">教育</span>
+  <div class="card-scenario">备课出题</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT / 文心一言</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>老师备课出题太耗时</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI根据知识点自动生成教案+练习题，省70%时间</span></div>
+  <div class="card-source">教育信息化报告</div>
+</div><div class="card" data-industry="教育">
+  <span class="industry-tag">教育</span>
+  <div class="card-scenario">作业批改</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>AI批改工具</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>批改作业是重复劳动</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI批改客观题+辅助主观题，释放教学精力</span></div>
+  <div class="card-source">智慧教育案例</div>
+</div><div class="card" data-industry="教育">
+  <span class="industry-tag">教育</span>
+  <div class="card-scenario">个性化辅导</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT / 豆包</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>大班教学无法因材施教</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI根据学生水平自适应出题和讲解</span></div>
+  <div class="card-source">AI+教育行业研究</div>
+</div><div class="card" data-industry="医疗">
+  <span class="industry-tag">医疗</span>
+  <div class="card-scenario">病历整理</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>AI语音录入+结构化</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>医生写病历占用大量时间</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI语音转病历，医生每天省1-2小时</span></div>
+  <div class="card-source">智慧医疗案例</div>
+</div><div class="card" data-industry="医疗">
+  <span class="industry-tag">医疗</span>
+  <div class="card-scenario">影像辅助</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>AI影像分析</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>影像科医生看片量大、易疲劳</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI初筛异常+标注，医生复核效率提升5倍</span></div>
+  <div class="card-source">医疗AI行业报告</div>
+</div><div class="card" data-industry="地产">
+  <span class="industry-tag">地产</span>
+  <div class="card-scenario">房源描述</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>中介写房源介绍千篇一律</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI根据房源特点生成个性化描述，带看量提升</span></div>
+  <div class="card-source">房产数字化案例</div>
+</div><div class="card" data-industry="地产">
+  <span class="industry-tag">地产</span>
+  <div class="card-scenario">客户跟进</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>AI CRM系统</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>客户多了记不住谁看过哪套</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI自动记录+推荐匹配房源，成交率提升</span></div>
+  <div class="card-source">贝壳AI应用</div>
+</div><div class="card" data-industry="法律">
+  <span class="industry-tag">法律</span>
+  <div class="card-scenario">法律咨询</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>ChatGPT + 法律知识库</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>小律所咨询量大、重复问题多</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI解答常见法律问题，律师专注复杂案件</span></div>
+  <div class="card-source">法律科技趋势报告</div>
+</div><div class="card" data-industry="法律">
+  <span class="industry-tag">法律</span>
+  <div class="card-scenario">文书生成</div>
+  <div class="card-row"><span class="label">🧰 工具</span><span>AI法律文书工具</span></div>
+  <div class="card-row"><span class="label">❗ 痛点</span><span>写起诉状/合同模板费时间</span></div>
+  <div class="card-row"><span class="label">📈 效果</span><span>AI根据案情自动生成法律文书初稿</span></div>
+  <div class="card-source">智慧司法案例</div>
+</div>
+</div>
+<div class="footer">星链 AI · 内部素材库</div>
+<script>
+function filter(ind, btn) {
+  document.querySelectorAll('.tag').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    c.classList.toggle('hidden', ind!=='全部' && c.dataset.industry!==ind);
+  });
+}
+</script>
+</body>
+</html>

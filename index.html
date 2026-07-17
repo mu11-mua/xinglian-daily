@@ -6,21 +6,63 @@
 <title>星链AI速报 · 2026.07.17</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#0a0a10;color:#fff;padding:24px 16px 60px}
-.cards{display:flex;flex-direction:column;gap:16px;max-width:420px;margin:0 auto}
-.card{border-radius:24px;padding:30px 24px 24px;position:relative;overflow:hidden}
-.card-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:20px;margin-bottom:14px;background:rgba(255,255,255,.2);backdrop-filter:blur(4px)}
-.card-title{font-size:30px;font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-1px}
-.card-body{font-size:14px;line-height:1.9;opacity:.9}
+body{
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0a0a10;
+  color: #fff;
+  padding: 24px 16px 60px;
+}
+.cards{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+.card{
+  border-radius: 24px;
+  padding: 30px 24px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.card-tag{
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.2);
+  backdrop-filter: blur(4px);
+}
+.card-title{
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: -1px;
+}
+.card-body{
+  font-size: 14px;
+  line-height: 1.9;
+  opacity: .9;
+}
 .card-body b{font-weight:700}
-.card-links{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
-.card-links a{color:#fff;opacity:.85;font-size:13px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px}
+.card-links{margin-top:16px;display:flex;flex-direction:column;gap:5px}
+.card-links a{color:#fff;opacity:.8;font-size:13px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);display:inline-block;padding-bottom:2px}
+.card-links .no-link{opacity:.5;font-size:13px}
+.meta{font-size:12px;opacity:.6;margin-top:10px}
+.strike{text-decoration:line-through;opacity:.5;margin-right:6px}
+
 .c0{background:linear-gradient(135deg,#ff512f,#dd2476)}
 .c1{background:linear-gradient(135deg,#11998e,#38ef7d)}
 .c2{background:linear-gradient(135deg,#4facfe,#00f2fe)}
 .c3{background:linear-gradient(135deg,#8e2de2,#4a00e0)}
 .c4{background:linear-gradient(135deg,#f7971e,#ffd200)}
 .c5{background:linear-gradient(135deg,#fc466b,#3f5efb)}
+
 .footer{text-align:center;margin-top:28px;padding:16px 0}
 .footer-brand{font-size:14px;font-weight:600;color:#666;letter-spacing:2px;margin-bottom:10px}
 .footer-cta{font-size:16px;font-weight:700;color:#ff512f;line-height:1.6}
@@ -31,44 +73,44 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 <div class="card c0">
   <div class="card-tag">大模型</div>
   <div class="card-title">GPT-5.6 来了</div>
-  <div class="card-body">OpenAI 7月10日发布<b>GPT-5.6系列</b>：旗舰Sol、均衡Terra、极速Luna。同步推出<b>ChatGPT Work</b>——能自主完成业务流程的Agent工具，Codex合并进ChatGPT。</div>
+  <div class="card-body">OpenAI 7月10日正式发布<b>GPT-5.6系列</b>：旗舰Sol、均衡Terra、极速Luna三款模型。同步推出<b>ChatGPT Work</b>——能自主完成业务流程的Agent工具，ChatGPT与Codex正式合并。</div>
   <div class="card-links"><a href="https://finance.sina.com.cn/tech/roll/2026-07-10/doc-inihhkuk3983956.shtml">新浪财经</a> <a href="https://news.qq.com/rain/a/20260710A04I8I00">腾讯新闻</a></div>
 </div>
 <div class="card c1">
-  <div class="card-tag">商业</div>
-  <div class="card-title">DeepSeek 冲刺 IPO</div>
-  <div class="card-body">DeepSeek估值<b>710亿美元</b>，正筹备第二轮融资并计划年底前提交IPO申请。同时自研AI推理芯片，减少对NVIDIA依赖。CEO梁文锋身价360亿美元。</div>
-  <div class="card-links"><a href="https://www.straitstimes.com/business/deepseek-preparing-for-ipo-filing-as-soon-as-end-2026">StraitsTimes</a> <a href="https://propakistani.pk/2026/07/15/deepseek-plans-to-go-public-eyes-71-billion-valuation/">ProPakistani</a></div>
+  <div class="card-tag">大模型</div>
+  <div class="card-title">DeepSeek 自研芯片</div>
+  <div class="card-body">据路透社7月7日报道，DeepSeek正在开发<b>自研AI推理芯片</b>，减少对NVIDIA和华为的依赖。同时传IPO计划，梁文锋身价<b>360亿美元</b>，成全球最富AI创始人。</div>
+  <div class="card-links"><a href="https://www.straitstimes.com/business/deepseek-preparing-for-ipo-filing-as-soon-as-end-2026">StraitsTimes</a></div>
 </div>
 <div class="card c2">
   <div class="card-tag">智能体</div>
-  <div class="card-title">Agent 六大趋势</div>
-  <div class="card-body">CB Insights发布69页<b>AI Agent圣经报告</b>，预言2026年6大趋势。AI正从被动回答进化为<b>主动解决复杂任务</b>——编程之后，客服、营销、医疗成下一波落地风口。</div>
-  <div class="card-links"><a href="https://www.36kr.com/p/3518938465770373">36氪</a></div>
+  <div class="card-title">AI Agent 年中转折</div>
+  <div class="card-body">2026年AI正从「被动回答」进化为<b>主动解决复杂任务</b>的自主智能体。CB Insights发布69页Agent圣经报告，预言<b>6大趋势</b>：编程热潮后，客服、营销、医疗成下一波落地风口。</div>
+  <div class="card-links"><a href="https://www.36kr.com/p/3518938465770373">36氪</a> <a href="https://www.sohu.com/a/1031126275_122851758">搜狐</a></div>
 </div>
 <div class="card c3">
   <div class="card-tag">机器人</div>
-  <div class="card-title">逐际动力 半年融 4 亿$</div>
-  <div class="card-body">中国人形机器人公司逐际动力完成<b>Pre-IPO轮融资</b>，半年累计融资<b>4亿美元</b>。2026年具身智能赛道融资额创历史新高，机器人从工厂走向家庭。</div>
-  <div class="card-links"><a href="https://www.sznews.com/news/content/2026-07/14/content_32120513.htm">深圳新闻网</a></div>
+  <div class="card-title">具身智能融资 460 亿</div>
+  <div class="card-body">2026年YTD中国具身智能赛道融资超<b>460亿元</b>创历史新高。人形机器人从演示走向工厂和零售，中国企业已开始把机器人<b>卖进家庭</b>——不只为工业，也为陪伴。</div>
+  <div class="card-links"><a href="https://www.sznews.com/news/content/2026-07/14/content_32120513.htm">深圳新闻网</a> <a href="https://www.news18.com/explainers/why-are-chinese-families-buying-humanoid-robots-inside-beijings-billion-dollar-ai-bet-shil-ws-el-10203308.html">News18</a></div>
 </div>
 <div class="card c4">
-  <div class="card-tag">智能体</div>
-  <div class="card-title">2026 AI 年中观察</div>
-  <div class="card-body">从「对话助手」到<b>「全能管家」</b>——AI正经历根本性范式转变。自主智能体能独立完成编码、研究、客服全流程，不再只是回答问题。</div>
-  <div class="card-links"><a href="https://www.sohu.com/a/1031126275_122851758">搜狐</a></div>
-</div>
-<div class="card c5">
   <div class="card-tag">政策</div>
   <div class="card-title">AI 监管强执行</div>
-  <div class="card-body">网信办启动<b>4个月AI专项审计</b>，聚焦数据安全与滥用。中国出台AI伦理、Agent、拟人化AI三项新规。企业「先用再说」时代结束。</div>
+  <div class="card-body">网信办启动<b>4个月AI专项审计</b>，聚焦数据安全与滥用风险。中国出台AI伦理、AI Agent、拟人化AI三项新规。企业「先用再说」的粗放时代结束了。</div>
   <div class="card-links"><a href="https://www.sohu.com/a/1022880731_122705007">搜狐</a> <a href="https://www.forbes.com/sites/robertszczerba/2026/07/14/china-plans-ai-agent-recalls-america-cant-even-agree-who-regulates-them/">Forbes</a></div>
+</div>
+<div class="card c5">
+  <div class="card-tag">商业</div>
+  <div class="card-title">英伟达 GTC 2026</div>
+  <div class="card-body">黄仁勋在GTC 2026宣布<b>智能体AI全面爆发</b>，全栈战略正式落地。两年前播下的生成式AI种子已结果——「有用的AI」来了。</div>
+  <div class="card-links"><a href="https://www.36kr.com/search/articles/%E8%8B%B1%E4%BC%9F%E8%BE%BE%20GTC%202026">36氪 GTC专题</a></div>
 </div>
 
 </div>
 <div class="footer">
-<div class="footer-brand">星链 AI · 每日速报</div>
-<div class="footer-cta">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</div>
+  <div class="footer-brand">星链 AI · 每日速报</div>
+  <div class="footer-cta">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</div>
 </div>
 </body>
 </html>

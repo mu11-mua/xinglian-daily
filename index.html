@@ -7,108 +7,166 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: #0a0a10;
+  font-family: -apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  background: #f5f0ec;
+  color: #302020;
+  padding: 20px 16px 60px;
+}
+.header{
+  text-align: center;
+  padding: 24px 0 8px;
+}
+.header-title{
+  font-size: 22px;
+  font-weight: 900;
+  color: #302020;
+  letter-spacing: 3px;
+}
+.header-date{
+  font-size: 13px;
+  color: #b07070;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+.filters{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 20px 0 24px;
+}
+.filter-tag{
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #d4c8c0;
+  background: #fff;
+  color: #886666;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.filter-tag.active,.filter-tag:hover{
+  background: #302020;
   color: #fff;
-  padding: 24px 16px 60px;
+  border-color: #302020;
 }
 .cards{
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   max-width: 420px;
   margin: 0 auto;
 }
 .card{
-  border-radius: 24px;
-  padding: 30px 24px 24px;
-  position: relative;
-  overflow: hidden;
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px 20px;
+  border-left: 4px solid #e85d75;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
 }
 .card-tag{
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-  background: rgba(255,255,255,.2);
-  backdrop-filter: blur(4px);
+  color: #b07070;
+  margin-bottom: 10px;
 }
 .card-title{
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 14px;
-  letter-spacing: -0.5px;
+  font-size: 19px;
+  font-weight: 800;
+  color: #302020;
+  line-height: 1.35;
+  margin-bottom: 10px;
 }
 .card-body{
   font-size: 14px;
-  line-height: 1.9;
-  opacity: .9;
+  color: #665555;
+  line-height: 1.85;
 }
-.card-body b{font-weight:700}
-.card-links{margin-top:16px;display:flex;flex-direction:column;gap:5px}
-.card-links a{color:#fff;opacity:.8;font-size:13px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);display:inline-block;padding-bottom:2px}
-.card-links .no-link{opacity:.5;font-size:13px}
+.footer{
+  text-align: center;
+  margin-top: 28px;
+  padding: 16px 0;
+  border-top: 1px solid #e5dcd5;
+}
+.footer-brand{
+  font-size: 13px;
+  color: #b09090;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.footer-cta{
+  font-size: 15px;
+  font-weight: 700;
+  color: #c0392b;
+  line-height: 1.7;
+}
 
-.c0{background:linear-gradient(135deg,#ff512f,#dd2476)}
-.c1{background:linear-gradient(135deg,#11998e,#38ef7d)}
-.c2{background:linear-gradient(135deg,#4facfe,#00f2fe)}
-.c3{background:linear-gradient(135deg,#8e2de2,#4a00e0)}
-.c4{background:linear-gradient(135deg,#f7971e,#ffd200)}
-.c5{background:linear-gradient(135deg,#fc466b,#3f5efb)}
-
-.footer{text-align:center;margin-top:28px;padding:16px 0}
-.footer-brand{font-size:14px;font-weight:600;color:#666;letter-spacing:2px;margin-bottom:10px}
-.footer-cta{font-size:16px;font-weight:700;color:#ff512f;line-height:1.6}
+@media (prefers-color-scheme: dark){
+  body{background:#1a1412;color:#e8ddd5}
+  .header-title{color:#e8ddd5}
+  .card{background:#2a201c;box-shadow:none}
+  .card-title{color:#e8ddd5}
+  .card-body{color:#b8a8a0}
+  .filter-tag{background:#2a201c;border-color:#4a3a30;color:#a09088}
+  .filter-tag.active,.filter-tag:hover{background:#e8ddd5;color:#1a1412;border-color:#e8ddd5}
+  .footer{border-top-color:#3a2a20}
+}
 </style>
 </head>
 <body>
+<div class="header">
+  <div class="header-title">星链 AI · 今日速报</div>
+  <div class="header-date">2026年7月17日</div>
+</div>
+<div class="filters">
+  <button class="filter-tag active" onclick="filter('全部')">全部</button><button class="filter-tag" onclick="filter('🏛️ 大会')">🏛️ 大会</button><button class="filter-tag" onclick="filter('🤖 产品')">🤖 产品</button><button class="filter-tag" onclick="filter('🏭 硬件')">🏭 硬件</button><button class="filter-tag" onclick="filter('💰 资本')">💰 资本</button><button class="filter-tag" onclick="filter('📈 上市')">📈 上市</button><button class="filter-tag" onclick="filter('⚡ 趋势')">⚡ 趋势</button>
+</div>
 <div class="cards">
-<div class="card c0">
-  <div class="card-tag">🏛️ 大会</div>
-  <div class="card-title">WAIC 2026今日开幕，全球AI治理协定签署</div>
-  <div class="card-body">第九届世界人工智能大会7月17日在上海开幕，主题「智能伙伴 共创未来」。「世界人工智能合作组织协定」现场签署，华为昇腾950超节点亮相，启元T1机器人登场。这是WAIC首次实现展区机器人全动态演示。</div>
-  <div class="card-links"><a href="https://www.baidu.com/s?wd=WAIC+2026+世界人工智能大会+7月17日" target="_blank">📎 来源</a></div>
+  
+<div class="card" data-cat="🏛️ 大会" style="border-left-color:#e85d75">
+  <div class="card-tag">WAIC开幕</div>
+  <div class="card-title">WAIC 2026今日开幕，全球AI协定签署</div>
+  <div class="card-body">第九届世界人工智能大会7月17日在上海开幕，主题「智能伙伴 共创未来」。世界人工智能合作组织协定现场签署，华为昇腾950超节点亮相，启元T1机器人首次实现展区全动态演示。</div>
 </div>
-<div class="card c1">
-  <div class="card-tag">🤖 大模型</div>
-  <div class="card-title">OpenAI发布GPT-5.6，ChatGPT Work正式上线</div>
-  <div class="card-body">7月10日，OpenAI推出GPT-5.6模型家族，同步发布Agent产品<b>ChatGPT Work</b>——由Codex驱动，能一键生成PPT、表格并直接导出Microsoft Office。Codex用户已突破<b>800万</b>，AI正式进入办公流落地阶段。</div>
-  <div class="card-links"><a href="https://www.baidu.com/s?wd=GPT-5.6+ChatGPT+Work+发布" target="_blank">📎 来源</a></div>
+<div class="card" data-cat="🤖 产品" style="border-left-color:#11998e">
+  <div class="card-tag">GPT-5.6</div>
+  <div class="card-title">OpenAI发布GPT-5.6，ChatGPT Work上线</div>
+  <div class="card-body">7月10日OpenAI推出GPT-5.6模型家族，同步发布Agent产品ChatGPT Work——由Codex驱动，一键生成PPT、表格并导出Office。Codex用户突破800万，AI正式落地日常办公流。</div>
 </div>
-<div class="card c2">
-  <div class="card-tag">🏭 硬件</div>
-  <div class="card-title">特斯拉Optimus第三代7月底启动量产</div>
-  <div class="card-body">特斯拉确认Optimus第三代人形机器人将于<b>7月下旬至8月</b>在弗里蒙特工厂启动量产。初期周产约<b>100台</b>，改造后的专用产线规划年产能达<b>百万台</b>。人形机器人正式迈入规模化放量阶段。</div>
-  <div class="card-links"><a href="https://www.baidu.com/s?wd=特斯拉+Optimus+第三代+量产+2026" target="_blank">📎 来源</a></div>
+<div class="card" data-cat="🏭 硬件" style="border-left-color:#4facfe">
+  <div class="card-tag">Optimus量产</div>
+  <div class="card-title">特斯拉Optimus第三代7月底量产</div>
+  <div class="card-body">特斯拉确认Optimus第三代将于7月下旬至8月在弗里蒙特工厂启动量产，初期周产约100台，专用产线规划年产能达百万台。人形机器人正式迈入规模化放量阶段。</div>
 </div>
-<div class="card c3">
-  <div class="card-tag">💰 资本</div>
-  <div class="card-title">DeepSeek推进第二轮融资，V4灰度测试中</div>
-  <div class="card-body">DeepSeek首轮融资超<b>500亿元</b>（估值4000亿），腾讯和宁德时代为最大外部投资者；第二轮募资至少<b>100亿</b>，正通过QFLP接收境外美元。同时V4开放灰度测试，提供快速模式、专家模式和识图模式。</div>
-  <div class="card-links"><a href="https://www.baidu.com/s?wd=DeepSeek+第二轮融资+V4+灰度测试" target="_blank">📎 来源</a></div>
+<div class="card" data-cat="💰 资本" style="border-left-color:#8e2de2">
+  <div class="card-tag">DeepSeek</div>
+  <div class="card-title">DeepSeek二轮融资，V4灰度测试中</div>
+  <div class="card-body">DeepSeek首轮融资超500亿元（估值4000亿），腾讯和宁德时代为最大外部投资者；第二轮至少募资100亿。V4同步开放灰度测试：快速模式、专家模式、识图模式三档。</div>
 </div>
-<div class="card c4">
-  <div class="card-tag">📈 上市</div>
-  <div class="card-title">Anthropic秘密提交IPO，AI三巨头同期冲刺</div>
-  <div class="card-body">Anthropic已秘密向SEC提交IPO申请，与OpenAI、SpaceX三家公司同期冲刺公开市场。Claude已编写Anthropic <b>80%以上</b>代码，工程师日均代码合并量同比提升<b>8倍</b>。AI竞争正式进入「拼规模」终局阶段。</div>
-  <div class="card-links"><a href="https://www.baidu.com/s?wd=Anthropic+IPO+2026+SEC" target="_blank">📎 来源</a></div>
+<div class="card" data-cat="📈 上市" style="border-left-color:#f7971e">
+  <div class="card-tag">Anthropic IPO</div>
+  <div class="card-title">Anthropic秘密提交IPO</div>
+  <div class="card-body">Anthropic已秘密向SEC提交IPO申请，与OpenAI、SpaceX同期冲刺公开市场。Claude已编写Anthropic 80%以上代码，工程师日均代码合并量同比提升8倍。</div>
 </div>
-<div class="card c5">
-  <div class="card-tag">⚡ 趋势</div>
-  <div class="card-title">AI竞争告别参数比拼，智能体商业化全面落地</div>
-  <div class="card-body">行业共识：大模型参数竞赛已结束，2026下半年全面转向<b>智能体商业化</b>。国内首款全尺寸量产机器人获超<b>1.3万</b>订单，多家企业产能目标直指万台级。工信部推进人形机器人与产业场景对接。</div>
-  <div class="card-links"><a href="https://www.baidu.com/s?wd=AI+智能体+商业化+人形机器人+量产+2026" target="_blank">📎 来源</a></div>
+<div class="card" data-cat="⚡ 趋势" style="border-left-color:#fc466b">
+  <div class="card-tag">商业化落地</div>
+  <div class="card-title">AI告别参数比拼，智能体商业化全面落地</div>
+  <div class="card-body">行业共识：大模型参数竞赛已结束，2026下半年全面转向智能体商业化。国内首款全尺寸量产机器人获超1.3万订单，多家企业产能目标直指万台级。</div>
 </div>
-
 </div>
 <div class="footer">
-  <div class="footer-brand">星链 AI · 每日速报</div>
   <div class="footer-cta">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</div>
 </div>
+<script>
+function filter(cat) {
+  document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = (cat === '全部' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
 </body>
 </html>

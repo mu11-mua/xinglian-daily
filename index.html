@@ -2,94 +2,155 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>星链AI速报 · 7月17日</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI速报 · 2026年7月18日</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#faf7f5;color:#2a1f1d;padding:16px 14px 50px}
-.header{text-align:center;padding:20px 0 6px}
-.header-title{font-size:21px;font-weight:900;color:#2a1f1d;letter-spacing:3px}
-.header-date{font-size:12px;color:#b07a7a;margin-top:4px}
-.filters{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:16px 0 20px}
-.ft{padding:5px 12px;border-radius:16px;border:1px solid #d4c4bf;background:#fff;color:#8a6a6a;font-size:12px;cursor:pointer;transition:.2s}
-.ft.active,.ft:hover{background:#2a1f1d;color:#fff;border-color:#2a1f1d}
-.cards{display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto}
-.card{background:#fff;border-radius:12px;padding:18px 18px 16px;border-left:3px solid #e85d75;box-shadow:0 1px 6px rgba(0,0,0,.03)}
-.card-tag{font-size:11px;font-weight:700;color:#b07a7a;letter-spacing:1px;margin-bottom:6px}
-.card-title{font-size:17px;font-weight:800;color:#2a1f1d;line-height:1.35;margin-bottom:8px}
-.card-body{font-size:13px;color:#665550;line-height:1.75;margin-bottom:10px}
-.card-link{display:inline-block;font-size:12px;font-weight:700;color:#b07a7a;text-decoration:none;border-bottom:1px solid #e0c8c0;padding-bottom:1px}
-.footer{text-align:center;margin-top:24px;padding:14px 0;border-top:1px solid #e8dcd5}
-.footer-cta{font-size:14px;font-weight:700;color:#c0392b;line-height:1.7}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#faf7f5; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; color:#2a1f1d; max-width:440px; margin:0 auto; padding:20px 16px 40px; }
+.header { text-align:center; padding:24px 0 16px; }
+.header h1 { font-size:20px; font-weight:700; color:#2a1f1d; }
+.header .date { font-size:13px; color:#b07a7a; margin-top:4px; }
+.filter-bar { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 20px; justify-content:center; }
+.filter-pill { padding:6px 14px; border-radius:20px; font-size:13px; cursor:pointer; border:1px solid #e0d6d3; background:#fff; color:#665550; transition:all .2s; }
+.filter-pill.active, .filter-pill:hover { background:#b07a7a; color:#fff; border-color:#b07a7a; }
+.card { background:#fff; border-radius:12px; margin-bottom:12px; padding:16px 16px 16px 20px; border-left:3px solid #ccc; box-shadow:0 1px 3px rgba(0,0,0,.04); position:relative; }
+.card .tag { font-size:11px; color:#b07a7a; margin-bottom:6px; }
+.card h2 { font-size:16px; font-weight:600; color:#2a1f1d; margin-bottom:6px; line-height:1.4; }
+.card p { font-size:14px; color:#665550; line-height:1.6; }
+.card .source { margin-top:8px; font-size:12px; }
+.card .source a { color:#b07a7a; text-decoration:none; }
+.card .source a:hover { text-decoration:underline; }
+.footer { text-align:center; padding:24px 16px; margin-top:20px; }
+.footer p { font-size:14px; color:#665550; line-height:1.8; }
+.footer .cta { display:inline-block; margin-top:8px; padding:10px 28px; background:#b07a7a; color:#fff; border-radius:24px; font-size:14px; text-decoration:none; }
+.footer .cta:hover { background:#9a6a6a; }
+.c1 { border-left-color:#e85d75; } .c2 { border-left-color:#11998e; } .c3 { border-left-color:#4facfe; }
+.c4 { border-left-color:#8e2de2; } .c5 { border-left-color:#f7971e; } .c6 { border-left-color:#fc466b; }
+.c7 { border-left-color:#e85d75; } .c8 { border-left-color:#11998e; } .c9 { border-left-color:#4facfe; }
+.c10 { border-left-color:#8e2de2; } .c11 { border-left-color:#f7971e; } .c12 { border-left-color:#fc466b; }
+@media (prefers-color-scheme:dark) {
+  body { background:#1a1715; color:#e8d5cc; }
+  .card { background:#24201d; }
+  .card h2 { color:#e8d5cc; }
+  .card p { color:#b8a59a; }
+  .filter-pill { background:#24201d; border-color:#3a3330; color:#b8a59a; }
+  .header h1 { color:#e8d5cc; }
+}
 </style>
 </head>
 <body>
-<div class="header"><div class="header-title">星链 AI · 今日速报</div><div class="header-date">2026年7月17日</div></div>
-<div class="filters"><button class="ft active" onclick="f('全部')">全部</button><button class="ft" onclick="f('🏛️ 大会')">🏛️ 大会</button><button class="ft" onclick="f('🏭 硬件')">🏭 硬件</button><button class="ft" onclick="f('💰 资本')">💰 资本</button><button class="ft" onclick="f('💻 工具')">💻 工具</button><button class="ft" onclick="f('📈 上市')">📈 上市</button><button class="ft" onclick="f('📜 政策')">📜 政策</button><button class="ft" onclick="f('🤖 产品')">🤖 产品</button></div>
-<div class="cards">
-<div class="card" data-cat="🏛️ 大会" style="border-left-color:#e85d75">
-  <div class="card-tag">🏛️ 大会</div>
-  <div class="card-title">WAIC 2026今日开幕，展览面积首破10万㎡</div>
-  <div class="card-body">第九届世界人工智能大会7月17-20日上海举办，1100+企业参展。MiniMax M3多模态大模型、阶跃Agent OS、首款AI智能体手机亮相。全球AI治理协定同步签署。</div>
-  <a class="card-link" href="https://www.sohu.com/a/1038199529_122066678" target="_blank">搜狐报道 →</a>
+
+<div class="header">
+  <h1>🤖 AI速报</h1>
+  <div class="date">2026年7月18日 · 周六</div>
 </div>
-<div class="card" data-cat="🤖 产品" style="border-left-color:#11998e">
-  <div class="card-tag">🤖 产品</div>
-  <div class="card-title">OpenAI发布GPT-5.6，ChatGPT Work正式上线</div>
-  <div class="card-body">7月10日OpenAI推出GPT-5.6模型家族，同步发布Agent产品ChatGPT Work——由Codex驱动，一键生成PPT、表格并导出Office。Codex用户已突破800万。</div>
-  <a class="card-link" href="https://baike.baidu.com/item/GPT-4" target="_blank">百度百科 →</a>
+
+<div class="filter-bar">
+  <span class="filter-pill active" onclick="filter('all')">全部</span>
+  <span class="filter-pill" onclick="filter('event')">🏛️ 大会</span>
+  <span class="filter-pill" onclick="filter('product')">🤖 产品</span>
+  <span class="filter-pill" onclick="filter('model')">🧠 模型</span>
+  <span class="filter-pill" onclick="filter('money')">💰 资本</span>
+  <span class="filter-pill" onclick="filter('policy')">📜 政策</span>
+  <span class="filter-pill" onclick="filter('trend')">📈 趋势</span>
 </div>
-<div class="card" data-cat="🤖 产品" style="border-left-color:#11998e">
-  <div class="card-tag">🤖 产品</div>
-  <div class="card-title">豆包公布付费方案：标准版68元/月</div>
-  <div class="card-body">字节旗下豆包在App Store更新三档付费订阅：标准版68元/月（688元/年）、加强版及Pro版。豆包大模型2.0已发布，全双工语音大模型同步上线。</div>
-  <a class="card-link" href="https://zhidao.baidu.com/question/1460506853143971940.html" target="_blank">百度知道 →</a>
+
+<div class="card c1" data-cat="event">
+  <div class="tag">🏛️ 大会</div>
+  <h2>WAIC 2026 上海开幕，习近平发表主旨讲话</h2>
+  <p>2026世界人工智能大会7月17-20日在上海举办，同期举行人工智能全球治理高级别会议。习近平在开幕式宣布中国支持全球AI发展重大举措。大会展出1024卡互联训练集群、20余种协作机器人、AI防伪互动站等。</p>
+  <div class="source"><a href="https://www.worldaic.com.cn/" target="_blank">WAIC官网 →</a></div>
 </div>
-<div class="card" data-cat="🏭 硬件" style="border-left-color:#4facfe">
-  <div class="card-tag">🏭 硬件</div>
-  <div class="card-title">特斯拉Optimus第三代7月底迈向量产</div>
-  <div class="card-body">特斯拉确认Optimus第三代将于7月下旬至8月在弗里蒙特工厂启动量产，初期周产约100台，改造产线规划年产能达百万台。人形机器人进入规模化放量阶段。</div>
-  <a class="card-link" href="https://baike.baidu.com/item/Optimus" target="_blank">百度百科 →</a>
+
+<div class="card c2" data-cat="model">
+  <div class="tag">🧠 模型</div>
+  <h2>DeepSeek V4上线：首创算力峰谷分时定价，夜间降60%</h2>
+  <p>DeepSeek V4大模型7月15日正式上线，首创算力峰谷分时定价——夜间闲置算力价格下调60%。V4-Pro模型价格将大幅下调，随着昇腾950超节点批量上市，国产大模型服务成本有望进一步下降。</p>
+  <div class="source"><a href="https://platform.deepseek.com/" target="_blank">DeepSeek平台 →</a></div>
 </div>
-<div class="card" data-cat="🏭 硬件" style="border-left-color:#4facfe">
-  <div class="card-tag">🏭 硬件</div>
-  <div class="card-title">国内人形机器人全年产量预计破10万台</div>
-  <div class="card-body">工信部透露2026年人形机器人整机产量有望突破10万台，对比2025年全球仅2万台翻了5倍。智元机器人累计出货超5100台，重点行业AI渗透率突破80%。</div>
-  <a class="card-link" href="https://baike.baidu.com/item/%E4%BA%BA%E5%BD%A2%E6%9C%BA%E5%99%A8%E4%BA%BA" target="_blank">百度百科 →</a>
+
+<div class="card c3" data-cat="model">
+  <div class="tag">🧠 模型</div>
+  <h2>OpenAI发布GPT-5.6三大版本，推理成本降低50%以上</h2>
+  <p>OpenAI公布GPT-5.6 Terra、GPT-5.5等三大版本。其中GPT-5.6 Terra通过架构优化将云端推理总成本降低50%以上，价格仅为GPT-5.5的1/16。但同时OpenAI安全系统负责人宣布离职。</p>
+  <div class="source"><a href="https://openai.com/" target="_blank">OpenAI →</a></div>
 </div>
-<div class="card" data-cat="💰 资本" style="border-left-color:#8e2de2">
-  <div class="card-tag">💰 资本</div>
-  <div class="card-title">DeepSeek二轮融资推进中，V4灰度测试开放</div>
-  <div class="card-body">DeepSeek首轮融资超500亿元（估值4000亿），腾讯、宁德时代为最大外部投资者。第二轮至少募资100亿。V4同步开放快速/专家/识图三档灰度测试。</div>
-  <a class="card-link" href="https://baike.baidu.com/item/DeepSeek" target="_blank">百度百科 →</a>
+
+<div class="card c4" data-cat="money">
+  <div class="tag">💰 资本</div>
+  <h2>DeepSeek启动IPO筹备，估值4800亿元</h2>
+  <p>DeepSeek已启动内地上市筹备，计划最快年底或2027年初提交A股IPO申请，估值达4800亿元。创始人梁文锋身家2400亿元登顶全球AI首富。5月底完成首轮外部融资70亿美元，年化收入达4-5亿美元，毛利率超50%。</p>
+  <div class="source"><a href="https://platform.deepseek.com/" target="_blank">DeepSeek →</a></div>
 </div>
-<div class="card" data-cat="💰 资本" style="border-left-color:#8e2de2">
-  <div class="card-tag">💰 资本</div>
-  <div class="card-title">字节AI资本开支上调至2000亿元</div>
-  <div class="card-body">字节跳动2026年AI资本开支计划上调至2000亿元人民币（约300亿美元）。美国银行报告预测全球AI基础设施资本支出将达1.5万亿美元。</div>
-  <a class="card-link" href="https://baike.baidu.com/item/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8" target="_blank">百度百科 →</a>
+
+<div class="card c5" data-cat="product">
+  <div class="tag">🤖 产品</div>
+  <h2>中国人形机器人年产量将突破10万台</h2>
+  <p>工信部在WAIC期间透露，2026年国内人形机器人整机产量有望突破10万台，对比2025年全球仅2万台出货量翻了5倍。特斯拉Optimus Gen3预计7-8月启动量产，魔法原子等厂商已进入工业商业场景验证。</p>
+  <div class="source"><a href="https://www.worldaic.com.cn/" target="_blank">WAIC官网 →</a></div>
 </div>
-<div class="card" data-cat="📈 上市" style="border-left-color:#f7971e">
-  <div class="card-tag">📈 上市</div>
-  <div class="card-title">Anthropic秘密提交IPO，Claude写了80%代码</div>
-  <div class="card-body">Anthropic已秘密向SEC提交IPO申请，与OpenAI、SpaceX同期冲刺公开市场。Claude已编写公司80%以上代码，工程师日均代码合并量同比提升8倍。</div>
-  <a class="card-link" href="https://baike.baidu.com/item/Anthropic" target="_blank">百度百科 →</a>
+
+<div class="card c6" data-cat="product">
+  <div class="tag">🤖 产品</div>
+  <h2>天翼发布AI桌面机器人"悟空"，面向3-12岁儿童</h2>
+  <p>天翼数字生活公司正式发布新一代家庭具身智能机器人"悟空"。采用14自由度设计，覆盖儿童陪伴、智慧康养等场景。这是继Loona、Ropet之后又一款面向消费级的桌面AI机器人，市场正在快速升温。</p>
+  <div class="source"><a href="https://www.chinatelecom.com.cn/" target="_blank">中国电信 →</a></div>
 </div>
-<div class="card" data-cat="💻 工具" style="border-left-color:#fc466b">
-  <div class="card-tag">💻 工具</div>
-  <div class="card-title">AI编程工具大爆发：Cursor领跑，超20款混战</div>
-  <div class="card-body">2026年AI编程助手已超20款。Cursor凭全栈自治Agent成为增长最快工具，Trae（字节旗下）异军突起，Claude Code与GitHub Copilot形成三强格局。</div>
-  <a class="card-link" href="https://blog.csdn.net/weixin_36467887/article/details/159619159" target="_blank">CSDN →</a>
+
+<div class="card c7" data-cat="policy">
+  <div class="tag">📜 政策</div>
+  <h2>《AI拟人化互动服务管理暂行办法》7月15日起施行</h2>
+  <p>国家网信办等五部门联合发布的管理办法正式生效，对AI拟人化互动服务的提供、使用和监管作出规范。这是全球首个专门针对AI拟人化交互的法规，要求服务提供者明确标识AI身份，禁止情感操控。</p>
+  <div class="source"><a href="https://dzswgf.mofcom.gov.cn/news/22/2026/4/1776058391006.html" target="_blank">商务部 →</a></div>
 </div>
-<div class="card" data-cat="📜 政策" style="border-left-color:#b07070">
-  <div class="card-tag">📜 政策</div>
-  <div class="card-title">中国AI核心产业规模突破1.2万亿</div>
-  <div class="card-body">2025年我国AI核心产业规模突破1.2万亿元，国产开源大模型全球下载量超100亿次，AI专利全球占比达60%。2026年增速预计仍超30%。</div>
-  <a class="card-link" href="https://baike.baidu.com/item/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD" target="_blank">百度百科 →</a>
-</div></div>
-<div class="footer"><div class="footer-cta">想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</div></div>
+
+<div class="card c8" data-cat="trend">
+  <div class="tag">📈 趋势</div>
+  <h2>2026：AI Agent从单兵作战进入多智能体协同时代</h2>
+  <p>AI Agent行业已进入"多智能体并行调度"阶段。产品交互从"一个AI助手"转变为"一个AI团队"，代码生成、测试、部署全流程自动化成为标配。企业预算中40%投基础设施、30%投管理平台、30%布局场景应用。</p>
+  <div class="source"></div>
+</div>
+
+<div class="card c9" data-cat="trend">
+  <div class="tag">📈 趋势</div>
+  <h2>2026被业内称为"物理AI元年"，AI正从数字走向物理</h2>
+  <p>WAIC期间多家企业和学者提出，AI正在从数字世界走向物理世界。具身智能、人形机器人、自动驾驶等方向加速落地。黄仁勋在专访中强调：AI并无自主意识，只是工具，切勿过度拟人。</p>
+  <div class="source"><a href="https://www.worldaic.com.cn/" target="_blank">WAIC官网 →</a></div>
+</div>
+
+<div class="card c10" data-cat="money">
+  <div class="tag">💰 资本</div>
+  <h2>高盛：全球AI实体产业投资将达7.6万亿美元</h2>
+  <p>高盛发布重磅报告预测，未来6年全球AI实体产业投资达7.6万亿美元，资本重心从纯大模型软件转向算力、工业机器人、AI基础设施。美国银行同期报告指出AI半导体夏季回调是健康重置，AI基础设施总支出将达1.5万亿美元。</p>
+  <div class="source"></div>
+</div>
+
+<div class="card c11" data-cat="event">
+  <div class="tag">🏛️ 大会</div>
+  <h2>WAIC 2026 SAIL奖揭晓，金砖AI中心推出14场系列活动</h2>
+  <p>2026世界人工智能大会SAIL奖（卓越人工智能引领者奖）正式揭晓。同期中国-金砖国家AI发展与合作中心推出14场专题系列活动，涵盖高层对话、标准协同、成果展示等，推动全球南方AI合作。</p>
+  <div class="source"><a href="https://www.worldaic.com.cn/" target="_blank">WAIC官网 →</a></div>
+</div>
+
+<div class="card c12" data-cat="trend">
+  <div class="tag">📈 趋势</div>
+  <h2>全球AI市场规模达7575亿美元，中国AI企业超6000家</h2>
+  <p>2025年全球AI市场规模达7575.8亿美元同比增长18.7%。中国AI企业数量超过6000家，国务院"人工智能+"行动意见构建顶层设计，推动AI与实体经济深度融合。亚太成为增长引擎。</p>
+  <div class="source"></div>
+</div>
+
+<div class="footer">
+  <p>📮 想让我去你公司看看哪里能用AI？<br>厦门预约，私信「诊断」</p>
+</div>
+
 <script>
-function f(cat){document.querySelectorAll('.ft').forEach(t=>t.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.card').forEach(card=>{card.style.display=(cat==='全部'||card.dataset.cat===cat)?'':'none'})}
+function filter(cat) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
 </script>
 </body>
 </html>
